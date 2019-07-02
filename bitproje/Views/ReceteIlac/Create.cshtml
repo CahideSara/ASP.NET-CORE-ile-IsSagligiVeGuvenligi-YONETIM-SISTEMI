@@ -1,0 +1,106 @@
+﻿@model bitproje.Entitys.Receteilac
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+
+<h4>REÇETEYE İLAÇ EKLE</h4>
+<hr />
+<div class="row">
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">İLAÇ</label>
+                <select id="e1" asp-for="Ilacid" class="form-control select">
+                    @foreach (var k in ViewBag.ilac)
+                    {
+                        <option value="@k.Ilacid">@k.Ilacid  /  @k.Ilacadi </option>
+                    }
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">KULLANIM ADEDİ(KUTU OLARAK)</label>
+                <input asp-for="Kullanimadedi" class="form-control" />
+                <span asp-validation-for="Kullanimadedi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">KULLANIM ŞEKLİ</label>
+                <select asp-for="Kullanimsekli" class="form-control select">
+                    <option value="Ağız İçi">Ağız İçi</option>
+                    <option value="Intra Dermal">Intra Dermal</option>
+                    <option value="Ağızdan(Oral)">Ağızdan(Oral)</option>
+                    <option value="Cilt üzerine(Epidermal)">Cilt üzerine(Epidermal)</option>
+                    <option value="Solunum yolu">Solunum yolu</option>
+                    <option value="Burun içi(Intranazal)">Burun içi(Intranazal)</option>
+                    <option value="Dil altı(Sublingual)">Dil altı(Sublingual)</option>
+                    <option value="Dış kulak yolu">Dış kulak yolu</option>
+                    <option value="Kolon">Kolon</option>
+                    <option value="Intra müsküler">Intra müsküler</option>
+                    <option value="Göz üzerine">Göz üzerine</option>
+                    <option value="Rektal">Rektal</option>
+                    <option value="Intra vajinal">Intra vajinal</option>
+                    <option value="Subkutan">Subkutan</option>
+                    <option value="Intra venöz">Intra venöz</option>
+                    <option value="Kalp içi">Kalp içi</option>
+                    <option value="İnhalasyon">İnhalasyon</option>
+                    <option value="Trans dermal">Trans dermal</option>
+                    <option value="İntravezikal">İntravezikal</option>
+                    <option value="İntra-artiküler">İntra-artiküler</option>
+                    <option value="İntraperitoneal">İntraperitoneal</option>
+                    <option value="İntravitreal">İntravitreal</option>
+                    <option value="İntratekal">İntratekal</option>
+                    <option value="İntraligamenter">İntraligamenter</option>
+                    <option value="Perinöral">Perinöral</option>
+                    <option value="İntrakaviter">İntrakaviter</option>
+                    <option value="Boş">Boş</option>
+                    <option value="5550 - Endodonti">5550 - Endodonti</option>
+                </select>
+                <span asp-validation-for="Kullanimsekli" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">PERİYODU</label>
+                <select asp-for="Periyod" class="form-control">
+                    <option value="GÜNDE">GÜNDE</option>
+                    <option value="HAFTADA">HAFTADA</option>
+                    <option value="AYDA">AYDA</option>
+                    <option value="YILDA">YILDA</option>
+                </select>
+                <span asp-validation-for="Periyod" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">İLAÇ DOZU</label>
+                <select asp-for="Ilacdozu" class="form-control">
+                    <option value="3X1">3X1</option>
+                    <option value="2X1">2X1</option>
+                    <option value="1X1">1X1</option>
+                </select>
+                <span asp-validation-for="Ilacdozu" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Rid" />
+            <div class="form-group">
+                &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <input type="submit" value="EKLE" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index" asp-route-id="@Model.Rid">
+
+        <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+    </a>
+</div>
+<script>
+    $(".select").select2();
+</script>

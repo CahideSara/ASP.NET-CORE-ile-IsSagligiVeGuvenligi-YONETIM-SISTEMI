@@ -1,0 +1,154 @@
+﻿@model bitproje.Entitys.Kullanici
+
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4> BİLGİLERİNİ GÜNCELLE</h4>
+<hr />
+<div class="row">
+    <form asp-action="ProfilEdit">
+        <div class="col-md-4">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Sicilno" />
+            <div class="form-group">
+                <label class="control-label">TC NUMARASI</label>
+                <input asp-for="Tc" class="form-control" />
+                <span asp-validation-for="Tc" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">ADI</label>
+                <input asp-for="Ad" class="form-control" />
+                <span asp-validation-for="Ad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">SOYADI</label>
+                <input asp-for="Soyad" class="form-control" />
+                <span asp-validation-for="Soyad" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">BOYU(cm olarak)</label>
+                <input asp-for="Boy" class="form-control" />
+                <span asp-validation-for="Boy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">KİLOSU(tam sayı)</label>
+                <input asp-for="Kilo" class="form-control" />
+                <span asp-validation-for="Kilo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">KAN GRUBU</label>
+                <select asp-for="Kangrup" class="form-control">
+                    <option value="0 Rh(+)">0 Rh(+)</option>
+                    <option value="A Rh(+)">A Rh(+)</option>
+                    <option value="B Rh(+)">B Rh(+)</option>
+                    <option value="AB Rh(+)">AB Rh(+)</option>
+                    <option value="0 Rh(-)">0 Rh(-)</option>
+                    <option value="A Rh(-)">A Rh(-)</option>
+                    <option value="B Rh(-)">B Rh(-)</option>
+                    <option value="AB Rh(-)">AB Rh(-)</option>
+                    <option value="Bilinmiyor">Bilinmiyor</option>
+                </select>
+                <span asp-validation-for="Kangrup" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+           
+            <div class="form-group">
+                <label class="control-label">CİNSİYET</label>
+                <select asp-for="Cinsiyet" class="form-control">
+                    <option value="KADIN">KADIN</option>
+                    <option value="ERKEK">ERKEK</option>
+                </select>
+                <span asp-validation-for="Cinsiyet" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">DOĞUM YERİ</label>
+                <input asp-for="Dogumyer" class="form-control" />
+                <span asp-validation-for="Dogumyer" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">DOĞUM TARİHİ</label>
+                <input asp-for="Dogumtarih" class="form-control" />
+                <span asp-validation-for="Dogumtarih" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">ÖĞRENİM DURUMU</label>
+                <select asp-for="Ogrenimdurum" class="form-control">
+                    <option value="İLKOKUL">İLKOKUL</option>
+                    <option value="ORTAOKUL">ORTAOKUL</option>
+                    <option value="İLKÖĞRETİM">İLKÖĞRETİM</option>
+                    <option value="LİSE">LİSE</option>
+                    <option value="TEKNİK LİSE">TEKNİK LİSE</option>
+                    <option value="MESLEK LİSESİ">MESLEK LİSESİ</option>
+                    <option value="YÜKSEKOKUL">YÜKSEKOKUL</option>
+                    <option value="ÜNİVERSİTE">ÜNİVERSİTE</option>
+                    <option value="YÜKSEK LİSANS">YÜKSEK LİSANS</option>
+                    <option value="DOKTORA">DOKTORA</option>
+                </select>
+                <span asp-validation-for="Ogrenimdurum" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">STATÜ</label>
+                <select asp-for="Statü" class="form-control">
+                    @foreach (var k in ViewBag.statu)
+                    {
+                        <option value="@k.Statuadi">@k.Statuadi </option>
+                    }
+                </select>
+                <span asp-validation-for="Statü" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label class="control-label">İSG KURUL GÖREVİ</label>
+                <select asp-for="Isgkurulgorev" class="form-control">
+                    <option value="Çalışan Temsilcisi">Çalışan Temsilcisi</option>
+                    <option value="İş Güvenliği Uzmanı">İş Güvenliği Uzmanı</option>
+                    <option value="İşveren / İşveren Vekili">İşveren / İşveren Vekili</option>
+                    <option value="İşyeri Hekimi">İşyeri Hekimi</option>
+                </select>
+                <span asp-validation-for="Isgkurulgorev" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">İŞE BAŞLANGIÇ TARİHİ</label>
+                <input asp-for="Isebaslangictarih" class="form-control" />
+                <span asp-validation-for="Isebaslangictarih" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">UNVAN</label>
+                <input asp-for="Unvan" class="form-control" />
+                <span asp-validation-for="Unvan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">DURUM</label>
+                <select asp-for="Durum" class="form-control">
+                    <option value="AKTİF">AKTİF</option>
+                    <option value="PASİF">PASİF</option>
+                </select>
+                <span asp-validation-for="Durum" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Grupid" />
+            <input type="hidden" asp-for="Gorevtanim" />
+            <div class="form-group">
+                &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <input type="submit" style="background-color:#8f8fa0;font-weight:800" value="KAYDET" class="btn btn-default" />
+            </div>
+
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Profil">
+
+        <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+    </a>
+</div>
+

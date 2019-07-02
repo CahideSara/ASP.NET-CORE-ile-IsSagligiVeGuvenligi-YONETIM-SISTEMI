@@ -1,0 +1,123 @@
+﻿@model bitproje.Entitys.Muayene
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    dt {
+        height: 28px;
+    }
+</style>
+<h3>MUAYENE</h3>
+<br />
+
+<div>
+    <h style="color:red;">BU MUAYENE KAYDINI SİLMEK İSTEDİĞİNİZE EMİN MİSİNİZ ?</h>
+
+    <dl class="dl-horizontal">
+        <dt>
+            MUAYENEYİ YAPAN
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SicilnoNavigation.Sicilno) / @Html.DisplayFor(model => model.SicilnoNavigation.Ad)  @Html.DisplayFor(model => model.SicilnoNavigation.Soyad)  / @Html.DisplayFor(model => model.SicilnoNavigation.Gorevtanim)
+        </dd>
+        <dt>
+            MUAYENE OLAN
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SicilnopNavigation.Sicilnop) / @Html.DisplayFor(model => model.SicilnopNavigation.Ad)  @Html.DisplayFor(model => model.SicilnopNavigation.Soyad)
+        </dd>
+        <dt>
+            MUAYENE NEDENİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mneden)
+        </dd>
+        <dt>
+            MUAYENE TARİHİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Mtarihi)
+        </dd>
+        <dt>
+            SONRAKİ MUAYENE TARİHİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sonrakimtarih)
+        </dd>
+        <dt>
+            ANNE HASTALIK GEÇMİŞİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Annehastalikg)
+        </dd>
+        <dt>
+            BABA HASTALIK GEÇMİŞİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Babahastalikg)
+        </dd>
+        <dt>
+            KARDEŞ HASTALIK GEÇMİŞİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Kardeshastalikg)
+        </dd>
+        <dt>
+            ÇOCUK HASTALIK GEÇMİŞİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cocukhastalikg)
+        </dd>
+        <dt>
+            BÜYÜK TANSİYON
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Büyüktan)
+        </dd>
+        <dt>
+            KÜÇÜK TANSİYON
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Kücüktan)
+        </dd>
+        <dt>
+            NABIZ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Nabiz)
+        </dd>
+        <dt>
+            KİLO
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Kilo)
+        </dd>
+        <dt>
+            BOY
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Boy)
+        </dd>
+        <dt>
+            KAN GRUP
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Kangrup)
+        </dd>
+
+    </dl>
+
+    <form asp-action="Delete">
+
+        @if (@Context.Session.GetString("grubu") == "A")
+        {<a asp-action="Grupmuayene">LİSTEYE GERİ DÖN</a><i>&emsp;| &emsp;</i>}
+        else if (@Context.Session.GetString("grubu") == "C")
+        { <a asp-action="kullaniciFirmamuayene">LİSTEYE GERİ DÖN</a><i>&emsp;| &emsp;</i>}
+        <input type="hidden" asp-for="Mid" />
+        <input type="submit" style="font-size:13px;font-weight:bold;height:27px;width:70px;" value="SİL" class="btn btn-danger" />
+
+    </form>
+</div>

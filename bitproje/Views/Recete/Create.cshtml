@@ -1,0 +1,84 @@
+﻿@model bitproje.Entitys.Recete
+
+@{
+    ViewData["Title"] = "Create";
+}
+<h4>RECETE EKLE</h4>
+<hr />
+<div class="row">
+    <form asp-action="Create">
+        <div class="col-md-4">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">REÇETE TARİHİ</label>
+                <input asp-for="Rtarihi" class="form-control" />
+                <span asp-validation-for="Rtarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">REÇETE TİPİ</label>
+                <select asp-for="Rtipi" class="form-control">
+                    <option value="Normal">Normal</option>
+                    <option value="Kırmızı">Kırmızı</option>
+                    <option value="Mor">Mor</option>
+                    <option value="Turuncu">Turuncu</option>
+                    <option value="Yeşil">Yeşil</option>
+                </select>
+                <span asp-validation-for="Rtipi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">REÇETE ALT TİPİ</label>
+                <select asp-for="Ralttipi" class="form-control">
+                    <option value="Yatan Reçetesi">Yatan Reçetesi</option>
+                    <option value="Ayakta Reçetesi">Ayakta Reçetesi</option>
+                    <option value="Taburcu Reçetesi">Taburcu Reçetesi</option>
+                    <option value="Günübirlik Reçetesi">Günübirlik Reçetesi</option>
+                    <option value="Acil Reçetesi">Acil Reçetesi</option>
+                    <option value="Yeşil Alan Reçetesi">Yeşil Alan Reçetesi</option>
+                    <option value="Evde Bakım Reçetesi">Evde Bakım Reçetesi</option>
+                    <option value="Gezici Sağlık Hizmeti Reçetesi">Gezici Sağlık Hizmeti Reçetesi</option>
+                </select>
+                <span asp-validation-for="Ralttipi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">PROVİZYON TİPİ</label>
+                <select asp-for="Provizyontipi" class="form-control">
+                    <option value="Normal">Normal</option>
+                    <option value="Trafik">Trafik</option>
+                    <option value="Doğal Afet">Doğal Afet</option>
+                    <option value="Adli Vaka">Adli Vaka</option>
+                    <option value="İş Kazası">İş Kazası</option>
+                    <option value="Meslek Hastalığı">Meslek Hastalığı</option>
+                    <option value="Analık Hali">Analık Hali</option>
+                    <option value="3713/21">3713/21</option>
+                </select>
+                <span asp-validation-for="Provizyontipi" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">SERİ NO</label>
+                <input asp-for="Serino" class="form-control" />
+                <span asp-validation-for="Serino" class="text-danger"></span>
+            </div>
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Mid" />
+            <div class="form-group">
+                &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <input type="submit" value="EKLE" class="btn btn-info" />
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    <a href="/Muayene/Details/@Model.Mid"><img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" /></a>
+</div>
+
+
+
+
+
+
+
+
+
+
+

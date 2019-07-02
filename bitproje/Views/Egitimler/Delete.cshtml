@@ -1,0 +1,70 @@
+﻿@model bitproje.Entitys.Egitimler
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Delete";
+}
+<style>
+    dt {
+        height: 28px;
+    }
+</style>
+<h3>EGİTİM</h3>
+<br />
+
+<div>
+    <h style="color:red;">BU EĞİTİMİ SİLMEK İSTEDİĞİNİZE EMİN MİSİNİZ ?</h>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            EGİTMEN
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.kullanici.Sicilno)  / @Html.DisplayFor(model => model.kullanici.Ad)  @Html.DisplayFor(model => model.kullanici.Soyad) / @Html.DisplayFor(model => model.kullanici.Gorevtanim)
+        </dd>
+        <dt>
+            EGİTİM TARİHİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Egitimtrh)
+        </dd>
+        <dt>
+            EGİTİM KONULARI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Egitimkonulari)
+        </dd>
+        <dt>
+            TOPLAM SÜRE
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Toplamsure)
+        </dd>
+        <dt>
+            EGİTİM ALANI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Egitimalani)
+        </dd>
+        <dt>
+            AÇIKLAMA
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        @if (@Context.Session.GetString("grubu") == "A")
+        {
+            <a asp-action="Grupegitim">LİSTEYE GERİ DÖN</a><i> &emsp;| &emsp;</i>
+            <input type="hidden" asp-for="Egitimid" />
+            <input type="submit" style="font-size:13px;font-weight:bold;height:27px;width:70px;" value="SİL" class="btn btn-danger" />
+        }
+        @if (@Context.Session.GetString("grubu") == "A")
+        {<a asp-action="kulFirmaegitim">LİSTEYE GERİ DÖN</a><i> &emsp;| &emsp;</i>
+            <input type="hidden" asp-for="Egitimid" />
+            <input type="submit" style="font-size:13px;font-weight:bold;height:27px;width:70px;" value="SİL" class="btn btn-danger" />
+        }
+
+    </form>
+</div>

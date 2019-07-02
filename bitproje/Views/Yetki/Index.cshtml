@@ -1,0 +1,133 @@
+﻿@model bitproje.Entitys.YetkiKontrol
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<br />
+<br />
+<form asp-action="Index">
+    <table class="table" style="border:double;border-bottom-color:#000000;font-size:small">
+        <thead>
+            <tr>
+                <th scope="col"> </th>
+                <th scope="col">FİRMA </th>
+                <th scope="col">BİRİM</th>
+                <th scope="col">PERSONEL</th>
+                <th scope="col">İLAÇ TANIMI</th>
+                <th scope="col">TANI TANIMI</th>
+                <th scope="col">STATU</th>
+
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td></td>
+                <td>
+                    E &nbsp;S&nbsp;   G
+                </td>
+                <td>
+                    E  &nbsp; S  &nbsp; G
+                </td>
+                <td>
+                    E  &nbsp; S &nbsp;  G
+                </td>
+                <td>
+                    E &nbsp;  S
+                </td>
+                <td>
+                    E  &nbsp; S
+                </td>
+                <td>
+                    E  &nbsp; S
+                </td>
+            </tr>
+            <tr>
+                <td>
+                    FİRMA
+                </td>
+                <td>
+                    <input asp-for="firmafirmaekle" type="checkbox">  <input asp-for="firmafirmasil" type="checkbox">  <input asp-for="firmafirmaguncel" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="firmabirimekle" type="checkbox">  <input asp-for="firmabirimsil" type="checkbox">  <input asp-for="firmabirimguncel" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="firmapersonelekle" type="checkbox">  <input asp-for="firmapersonelsil" type="checkbox">  <input asp-for="firmapersonelguncel" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="firmailacekle" type="checkbox">  <input asp-for="firmailaccsil" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="firmataniekle" type="checkbox">  <input asp-for="firmatanisil" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="firmastatuekle" type="checkbox">  <input asp-for="firmastatusil" type="checkbox">
+                </td>
+            </tr>
+            <tr>
+                <td> HEKİM</td>
+
+                <td>
+                    <input asp-for="hekimfirmaekle" type="checkbox">  <input asp-for="hekimfirmaekle" type="checkbox">  <input asp-for="hekimfirmaekle" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="hekimbirimekle" type="checkbox">  <input asp-for="hekimbirimsil" type="checkbox">  <input asp-for="hekimbirimguncel" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="hekimpersonelekle" type="checkbox">  <input asp-for="hekimpersonelsil" type="checkbox">  <input asp-for="hekimpersonelguncel" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="hekimilacekle" type="checkbox">  <input asp-for="hekimilacsil" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="hekimtaniekle" type="checkbox">  <input asp-for="hekimtanisil" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="hekimstatuekle" type="checkbox">  <input asp-for="hekimstatusil" type="checkbox">
+                </td>
+            </tr>
+            <tr>
+
+                <td>
+                    UZMAN
+                </td>
+                <td>
+                    <input asp-for="uzmanfirmaekle" type="checkbox">  <input asp-for="uzmanfirmasil" type="checkbox">  <input asp-for="uzmanfirmaguncel" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="uzmanbirimekle" type="checkbox">  <input asp-for="uzmanbirimsil" type="checkbox">  <input asp-for="uzmanbirimguncel" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="uzmanpersonelekle" type="checkbox">  <input asp-for="uzmanpersonelsil" type="checkbox">  <input asp-for="uzmanpersonelguncel" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="uzmanilacekle" type="checkbox">  <input asp-for="uzmanilacsil" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="uzmantaniekle" type="checkbox">  <input asp-for="uzmantanisil" type="checkbox">
+                </td>
+                <td>
+                    <input asp-for="uzmanstatuekle" type="checkbox">  <input asp-for="uzmanstatusil" type="checkbox">
+                </td>
+            </tr>
+
+        </tbody>
+
+    </table>
+
+    <input type="hidden" asp-for="Id" />
+    <div class="form-group" style="align-items:center;text-align:center">
+        &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+        <input type="submit" style="background-color:#8f8fa0;font-weight:800" value="DEĞİŞİKLİKLERİ KAYDET" class="btn btn-default" />
+    </div>
+
+</form>
+
+
+   
+   
+
+    <p>E: EKLEME</p>
+    <p>S: SİLME</p>
+    <p>G: GÜNCELLEME</p>

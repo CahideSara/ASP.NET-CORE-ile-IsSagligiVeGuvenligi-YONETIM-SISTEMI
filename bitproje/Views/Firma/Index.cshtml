@@ -1,0 +1,79 @@
+﻿@model IEnumerable<bitproje.Entitys.Firma>
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<br />
+<br />
+<p>
+    @if (@Context.Session.GetString("grubu") == "A")
+    {
+        <i>&emsp;</i> <a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="firma ekle"></i> &nbsp; YENİ FİRMA EKLE</a>}
+    else if (@Context.Session.GetString("grubu") == "B" && @Context.Session.GetString("firmafirmaekle") == true.ToString())
+    {
+        <i>&emsp;</i> <a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="firma ekle"></i> &nbsp; YENİ FİRMA EKLE</a>}
+    else if (@Context.Session.GetString("grubu") == "C" && @Context.Session.GetString("hekimfirmaekle") == true.ToString())
+    {
+        <i>&emsp;</i> <a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="firma ekle"></i> &nbsp; YENİ FİRMA EKLE</a>}
+    else if (@Context.Session.GetString("grubu") == "D" && @Context.Session.GetString("uzmanfirmaekle") == true.ToString())
+    {
+        <i>&emsp;</i> <a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="firma ekle"></i> &nbsp; YENİ FİRMA EKLE</a>}
+
+
+
+</p>
+<style>
+    table {
+        font-size: 12px;
+    }
+</style>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">FİRMA ID </th>
+            <th scope="col">FİRMA AD</th>
+            <th scope="col">İŞ VEREN KİŞİ</th>
+            <th scope="col">TEHLİKE SINIFI</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var f in Model)
+        {
+            <tr>
+                <td> @f.Firmaid</td>
+                <td> @f.Funvan</td>
+                <td> @f.Isvrnadsoyad</td>
+                <td> @f.Tehlikesinif</td>
+                <td style="font-size:14px;">
+
+                    @if (@Context.Session.GetString("grubu") == "A")
+                    {<a asp-action="Edit" asp-route-id="@f.Firmaid"><i class="fas fa-edit" title="GÜNCELLE"></i></a><i>|</i>}
+                    else if (@Context.Session.GetString("grubu") == "B" && @Context.Session.GetString("firmafirmaguncel") == true.ToString())
+                    { <a asp-action="Edit" asp-route-id="@f.Firmaid"><i class="fas fa-edit" title="GÜNCELLE"></i></a><i>|</i>}
+                    else if (@Context.Session.GetString("grubu") == "C" && @Context.Session.GetString("hekimfirmaguncel") == true.ToString())
+                    { <a asp-action="Edit" asp-route-id="@f.Firmaid"><i class="fas fa-edit" title="GÜNCELLE"></i></a><i>|</i>}
+                    else if (@Context.Session.GetString("grubu") == "D" && @Context.Session.GetString("uzmanfirmaguncel") == true.ToString())
+                    { <a asp-action="Edit" asp-route-id="@f.Firmaid"><i class="fas fa-edit" title="GÜNCELLE"></i></a><i>|</i>}
+                    <a asp-action="Details" asp-route-id="@f.Firmaid"><i class="fas fa-info-circle" title="FİRMA DETAYI"></i></a>
+
+                    @if (@Context.Session.GetString("grubu") == "A")
+                    {<i> |</i><a asp-action="Delete" asp-route-id="@f.Firmaid"><i class="fas fa-trash-alt" title="FİRMAYI SİL"></i></a>}
+                    else if (@Context.Session.GetString("grubu") == "B" && @Context.Session.GetString("firmafirmasil") == true.ToString())
+                    {<i> |</i><a asp-action="Delete" asp-route-id="@f.Firmaid"><i class="fas fa-trash-alt" title="FİRMAYI SİL"></i></a>}
+                    else if (@Context.Session.GetString("grubu") == "C" && @Context.Session.GetString("hekimfirmasil") == true.ToString())
+                    {<i> |</i><a asp-action="Delete" asp-route-id="@f.Firmaid"><i class="fas fa-trash-alt" title="FİRMAYI SİL"></i></a>}
+                    else if (@Context.Session.GetString("grubu") == "D" && @Context.Session.GetString("uzmanfirmasil") == true.ToString())
+                    {<i> |</i><a asp-action="Delete" asp-route-id="@f.Firmaid"><i class="fas fa-trash-alt" title="FİRMAYI SİL"></i></a>}
+
+
+
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

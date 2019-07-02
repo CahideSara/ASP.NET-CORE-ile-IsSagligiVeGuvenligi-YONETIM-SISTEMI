@@ -1,0 +1,195 @@
+﻿@model bitproje.Entitys.Users
+
+@using Microsoft.AspNetCore.Http;
+<header>
+    <div class="container-fluid">
+
+        <nav class="navbar navbar-inverse navbar-fixed-top">
+            <div class="navbar-header navbar-form">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+
+                </button>
+
+                <img style="height:65px;" src="~/images/den.png" />
+            </div>
+
+            <div class="col-md-8 navbar-collapse collapse">
+                <br />                <br />
+                <i> ekleme yapılacak </i>
+
+            </div>
+            <div class="col-md-4 pull-right">
+
+                <ul class="nav navbar-nav pull-right">
+
+
+
+
+
+                    @if (@Context.Session.GetString("grubu") == "A")
+                    {
+                        <li class="dropdown dropdown-user dropdown-dark">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+                                <span>
+
+                                    <label style="font-size:15px;"> cahide sara</label>
+                                    <i class="fas fa-user-cog" style="font-size:35px;"></i><br />&nbsp;
+                                    <span class="firmname" style="font-size:15px;">
+                                        ADMİN
+                                        SAYFASI
+                                    </span>
+                                </span>
+
+
+
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li>
+                                    <a href="/Profile/Index">
+                                        <i class="fas fa-user"></i> Profil
+                                    </a>
+                                </li>
+
+                                <li>
+                                    <a>
+                                        <i class="fas fa-sign-out-alt"></i> Çıkış yap
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else if (@Context.Session.GetString("grubu") == "B")
+                    {
+                        <li class="dropdown dropdown-user dropdown-dark">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+                                <span>
+
+                                    <label style="font-size:15px;"> @Html.DisplayFor(model => model.firma.Isvrnadsoyad)</label>
+                                    <i class="fas fa-user-cog" style="font-size:35px;"></i><br />&nbsp;
+                                     <span class="firmname" style="font-size:15px;">
+                                      @Html.DisplayFor(model => model.firma.Funvan)
+                                  (@Html.DisplayFor(model => model.firma.Durum))
+                                   </span>
+                                </span>
+
+
+
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li>
+                                    <a href="/Profile/Index">
+                                        <i class="fas fa-user"></i> Profil
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+
+                                        <i class="fas fa-retweet"></i> Firma Değiştir
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i class="fas fa-sign-out-alt"></i> Çıkış yap
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else if (@Context.Session.GetString("grubu") == "C")
+                    {
+                        <li class="dropdown dropdown-user dropdown-dark">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+                                <span>
+
+                                    <label style="font-size:15px;"> cahide sara</label>
+                                    <i class="fas fa-user-cog" style="font-size:35px;"></i><br />&nbsp;
+                                    <span class="firmname" style="font-size:15px;">
+                                        hayat
+                                        (Ana Firma)
+                                    </span>
+                                </span>
+
+
+
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li>
+                                    <a href="/Profile/Index">
+                                        <i class="fas fa-user"></i> Profil
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+
+                                        <i class="fas fa-retweet"></i> Firma Değiştir
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i class="fas fa-sign-out-alt"></i> Çıkış yap
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+                    }
+                    else if (@Context.Session.GetString("grubu") == "D")
+                    {
+                        <li class="dropdown dropdown-user dropdown-dark">
+                            <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+
+                                <span>
+
+                                    <label style="font-size:15px;"> cahide sara</label>
+                                    <i class="fas fa-user-cog" style="font-size:35px;"></i><br />&nbsp;
+                                    <span class="firmname" style="font-size:15px;">
+                                        hayat
+                                        (Ana Firma)
+                                    </span>
+                                </span>
+
+
+
+                            </a>
+                            <ul class="dropdown-menu dropdown-menu-default">
+                                <li>
+                                    <a href="/Profile/Index">
+                                        <i class="fas fa-user"></i> Profil
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+
+                                        <i class="fas fa-retweet"></i> Firma Değiştir
+                                    </a>
+                                </li>
+                                <li>
+                                    <a>
+                                        <i class="fas fa-sign-out-alt"></i> Çıkış yap
+                                    </a>
+                                </li>
+                            </ul>
+                        </li>
+
+                    }
+
+
+                </ul>
+            </div>
+
+
+
+
+
+
+        </nav>
+    </div>
+
+</header>

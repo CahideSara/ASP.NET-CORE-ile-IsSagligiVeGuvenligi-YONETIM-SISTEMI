@@ -1,0 +1,98 @@
+﻿@model bitproje.Entitys.Users
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<style>
+
+
+    body {
+        font-family: Verdana, monospace, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: justify;
+        min-height: 800px;
+        background: #52aa6f; /* Old browsers */
+        background: -moz-linear-gradient(top, #52aa6f 0%, #4096ee 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#52aa6f), color-stop(100%,#4096ee)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #52aa6f 0%,#4096ee 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #52aa6f 0%,#4096ee 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #52aa6f 0%,#4096ee 100%); /* IE10+ */
+        background: linear-gradient(to bottom, #52aa6f 0%,#4096ee 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#52aa6f', endColorstr='#4096ee',GradientType=0 ); /* IE6-9 */
+    }
+</style>
+
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - bitproje</title>
+
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+              integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+              crossorigin="anonymous" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <title>Login</title>
+</head>
+
+
+<body class="text-center">
+
+    <div>
+
+        <div class="col-md-4"></div>
+        <div class="col-md-4" style="background-color:white;border-radius: 40px;">
+
+
+
+            <form method="post" asp-controller="Users" asp-action="Login">
+                <br />
+                <img class="mb-3" src="~/images/indir.jpg" alt="" width="300" height="120">
+                <h1 class="h3 mb-3 font-weight-normal">Giriş</h1>
+                <a style="color:red;">
+                    @ViewBag.error
+                </a>
+                <div class="form-group">
+
+                    <input asp-for="Kullaniciadi" class="form-control" placeholder="KULLANICI ADI" required="" autofocus="" />
+                    <span asp-validation-for="Kullaniciadi" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <input asp-for="Sifre" type="password" class="form-control" placeholder="ŞİFRE" required="" />
+                    <span asp-validation-for="Sifre" class="text-danger"></span>
+                </div>
+
+
+                <div>
+
+                    <a asp-action="Degis" asp-controller="Grup">Şifremi unuttum</a>
+
+
+                </div>
+                <br />
+                <div class="form-group">
+                    <input type="submit" class="btn btn-lg btn-primary btn-block" value="Login" />
+                </div>
+
+
+                <br />
+                <p class="mt-5 mb-3 text-muted">© 2018-2019</p><br />
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

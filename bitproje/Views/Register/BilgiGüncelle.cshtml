@@ -1,0 +1,71 @@
+﻿@model bitproje.Entitys.Register
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<div>
+
+    <div class="col-md-2"></div>
+    <div class="col-md-8" style="background-color:#d3bfbf;border-radius: 40px;height:430px">
+        <form asp-action="BilgiGüncelle">
+            <br /> 
+            <h1 class="h3 mb-3 font-weight-normal" style="text-align:center">BİLGİLERİNİ GÜNCELLE</h1>
+            <br/>
+            <div class="col-md-6">
+
+                <a style="color:red;">
+                    @ViewBag.sonuc
+                </a>
+                <div class="form-group">
+                    <label class="control-label">KULLANICI ADI*</label>
+                    <input asp-for="Kullaniciadi" class="form-control" required="" autofocus="" />
+                    <span asp-validation-for="Kullaniciadi" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">ŞİFRE*</label>
+                    <input asp-for="Sifre" type="password" class="form-control" required="" />
+                    <span asp-validation-for="Sifre" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">ŞİFRE TEKRARI*</label>
+                    <input asp-for="SifreTekrar" type="password" class="form-control" required="" />
+                    <span asp-validation-for="SifreTekrar" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">EN SEVDİĞİN RENK ?*</label>
+                    <input asp-for="renk" class="form-control" required="" autofocus="" />
+                    <span asp-validation-for="renk" class="text-danger"></span>
+                </div>
+            </div>
+            <div class="col-md-6">
+
+                <div class="form-group">
+                    <label class="control-label">ÖNEMLİ BİR SORU BELİRLE ?*</label>
+                    <input asp-for="soru" class="form-control" required="" autofocus="" />
+                    <span asp-validation-for="soru" class="text-danger"></span>
+                </div>
+                <div class="form-group">
+                    <label class="control-label">CEVAP*</label>
+                    <input asp-for="cevap" class="form-control" required="" autofocus="" />
+                    <span asp-validation-for="cevap" class="text-danger"></span>
+                </div>
+                <br />
+                <input type="hidden" asp-for="Id" />
+                <div class="form-group">
+                    <input type="submit" class="btn btn-lg btn-primary btn-block" value="GÜNCELLE" />
+                </div>
+
+                
+            </div>
+            <br />
+            <br />
+
+
+
+           
+        </form>
+    </div>
+
+</div>

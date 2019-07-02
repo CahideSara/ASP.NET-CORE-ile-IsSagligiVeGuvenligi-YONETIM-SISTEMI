@@ -1,0 +1,166 @@
+﻿@model bitproje.Entitys.Muayene
+@using Microsoft.AspNetCore.Http;
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+
+<h4>MUAYENE EKLE</h4>
+<hr />
+<div class="row">
+    <form asp-action="Create">
+        <div class="col-md-4">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+
+            @if (@Context.Session.GetString("grubu") == "A")
+            {
+                <div class="form-group">
+                    <label class="control-label">MUAYENEYİ YAPAN</label>
+                    <select asp-for="Sicilno" class="form-control select">
+                        @foreach (var k in ViewBag.mkullanici)
+                        {
+                            <option value="@k.Sicilno">@k.Sicilno  /  @k.Ad   @k.Soyad  /  @k.Gorevtanim</option>
+                        }
+                    </select>
+                </div>
+            }
+            else if (@Context.Session.GetString("grubu") == "C")
+            {
+                <div class="form-group">
+                    <label class="control-label">MUAYENEYİ YAPAN</label>
+                    <br/>
+                    <p>" @ViewBag.mkullanici.Sicilno  / @ViewBag.mkullanici.Ad  @ViewBag.mkullanici.Soyad "   </p>
+                </div>
+                <input type="hidden" asp-for="Sicilno" />
+            }
+          
+
+
+            <div class="form-group">
+                <label class="control-label">MUAYENE OLAN</label>
+                <select asp-for="Sicilnop" class="form-control select">
+                    @foreach (var k in ViewBag.mpersonel)
+                    {
+                        <option value="@k.Sicilnop">@k.Sicilnop  /  @k.Ad    @k.Soyad  </option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">MUAYENE NEDENİ</label>
+                <input asp-for="Mneden" class="form-control" />
+                <span asp-validation-for="Mneden" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">MUAYENE TARİHİ</label>
+                <input asp-for="Mtarihi" class="form-control" />
+                <span asp-validation-for="Mtarihi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">SONRAKİ MUAYENE TARİHİ</label>
+                <input asp-for="Sonrakimtarih" class="form-control" />
+                <span asp-validation-for="Sonrakimtarih" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">ANNE HASTALIK GEÇMİŞİ</label>
+                <input asp-for="Annehastalikg" class="form-control" />
+                <span asp-validation-for="Annehastalikg" class="text-danger"></span>
+            </div>
+
+        </div>
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label class="control-label">BABA HASTALIK GEÇMİŞİ</label>
+                <input asp-for="Babahastalikg" class="form-control" />
+                <span asp-validation-for="Babahastalikg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">KARDEŞ HASTALIK GEÇMİŞİ</label>
+                <input asp-for="Kardeshastalikg" class="form-control" />
+                <span asp-validation-for="Kardeshastalikg" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">ÇOCUK HASTALIK GEÇMİŞİ</label>
+                <input asp-for="Cocukhastalikg" class="form-control" />
+                <span asp-validation-for="Cocukhastalikg" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">BÜYÜK TANSİYON</label>
+                <input asp-for="Büyüktan" class="form-control" />
+                <span asp-validation-for="Büyüktan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">KÜÇÜK TANSİYON</label>
+                <input asp-for="Kücüktan" class="form-control" />
+                <span asp-validation-for="Kücüktan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">NABIZ</label>
+                <input asp-for="Nabiz" class="form-control" />
+                <span asp-validation-for="Nabiz" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label class="control-label">KİLO(cm olarak)</label>
+                <input asp-for="Kilo" class="form-control" />
+                <span asp-validation-for="Kilo" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">BOY(tam sayı)</label>
+                <input asp-for="Boy" class="form-control" />
+                <span asp-validation-for="Boy" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">KAN GRUP</label>
+                <select asp-for="Kangrup" class="form-control">
+                    <option value="0 Rh(+)">0 Rh(+)</option>
+                    <option value="A Rh(+)">A Rh(+)</option>
+                    <option value="B Rh(+)">B Rh(+)</option>
+                    <option value="AB Rh(+)">AB Rh(+)</option>
+                    <option value="0 Rh(-)">0 Rh(-)</option>
+                    <option value="A Rh(-)">A Rh(-)</option>
+                    <option value="B Rh(-)">B Rh(-)</option>
+                    <option value="AB Rh(-)">AB Rh(-)</option>
+                    <option value="Bilinmiyor">Bilinmiyor</option>
+                </select>
+                <span asp-validation-for="Kangrup" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <input type="submit" value="EKLE" class="btn btn-info" />
+            </div>
+        </div>
+    </form>
+</div>
+<div>
+    @if (@Context.Session.GetString("grubu") == "A")
+    {
+        <a asp-action="Grupmuayene">
+
+            <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    }
+    else if (@Context.Session.GetString("grubu") == "C")
+    {
+        <a asp-action="kullaniciFirmamuayene">
+
+            <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    }
+  
+
+</div>
+<script>
+    $(".select").select2();
+</script>

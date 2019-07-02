@@ -1,0 +1,59 @@
+﻿@model IEnumerable<bitproje.Entitys.Recete>
+
+@{
+    ViewData["Title"] = "Index";
+}
+<p>
+    <a asp-action="Create">Create New</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+               REÇETE TARİHİ
+            </th>
+            <th>
+                REÇETE TİPİ
+            </th>
+            <th>
+                REÇETE ALT TİPİ
+            </th>
+            <th>
+                PROVİZYON TİPİ
+            </th>
+            <th>
+                SERİ NUMARASI
+            </th>
+            
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rtarihi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rtipi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Ralttipi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Provizyontipi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Serino)
+            </td>
+            
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Rid">Edit</a> |
+                <a asp-action="Details" asp-route-id="@item.Rid">İlaçlar</a> |
+                <a asp-action="Delete" asp-route-id="@item.Rid">Delete</a>
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<a asp-action="Index" asp-controller="Muayene">Back to List</a>

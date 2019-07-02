@@ -1,0 +1,483 @@
+﻿@using Microsoft.AspNetCore.Http;
+
+<style>
+
+    .altmenu {
+        background-color: #645e5e
+    }
+
+    #baslıkk {
+        background-color: #909077;
+        border-radius: 10px;
+        width: 250px;
+    }
+
+    ul {
+        list-style-position: inside;
+    }
+
+    .acilirmenu {
+        width: 180px;
+        height: auto;
+    }
+
+        .acilirmenu ul {
+            width: 180px;
+            margin: 0;
+            padding: 0;
+            list-style-type: none;
+        }
+
+        .acilirmenu li {
+            position: relative;
+        }
+
+            .acilirmenu li ul {
+                position: inherit;
+                list-style-type: none;
+                left: 29px;
+                width: 180px;
+                display: none;
+                top: 0;
+            }
+
+            .acilirmenu li a {
+                height: 30px;
+                display: block;
+                text-decoration: none;
+                background-color: #3EA3AD;
+                color: #FFF;
+                font: 500 15px Verdana;
+                padding: 5px;
+                border: 1px solid #FFF;
+                border-bottom: 0;
+                text-align: center;
+                line-height: 30px;
+            }
+
+                .acilirmenu li a:hover {
+                    background-color: #52BEAA;
+                    color: #FF0;
+                }
+
+            .acilirmenu li:hover ul {
+                display: block;
+            }
+
+
+    .main {
+        width: 100%;
+        height: auto;
+        margin: 0px 0px 0px 0px;
+        position: relative;
+    }
+
+    #altmenuli {
+        width: 265px;
+    }
+
+    #menuli {
+        background-color: #60605e;
+        border-radius: 10px;
+        width: 280px;
+        height: 40px;
+    }
+
+    #dene {
+        display: none;
+    }
+</style>
+
+<script>
+    var a = 0;
+    function degistir() {
+        if (a == 1) {
+            document.getElementById("dene").style.display = "none";
+            a = 0;
+        }
+        else {
+            document.getElementById("dene").style.display = "block";
+            a = 1;
+        }
+
+    }
+</script>
+
+@if (@Context.Session.GetString("grubu") == "A")
+{
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-link list-group-item-success " style="background-color:honeydew;border-width:inherit;position:center">
+            <li class="menu" id="menuli">
+
+                @if (@Context.Session.GetString("firmagrubuid") == null)
+                {
+                    <a asp-action="Degis" asp-controller="Grup" style="font-size:10px;">FİRMA GRUBU SEÇİNİZ</a>
+                }
+                else
+                {
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <span>
+                            <label style="font-size:20px;"> @Context.Session.GetString("firmagrubuid") / @Context.Session.GetString("firmagrubuad") </label>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-default">
+
+                        <li>
+                            <a asp-action="Degis" asp-controller="Grup" style="font-size:10px;color:#645e5e">FİRMA GRUBUNU DEĞİSTİR</a>
+                        </li>
+                    </ul>
+                }
+
+
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item dropdown dropdown-toggle dropdown-dark">
+                <a onclick="degistir()" id="menuli" asp-area="" asp-controller="" asp-action="" class="dropdown-header" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                    <span>
+                        <label style="color:black;width:300px;">
+                            <i class="fas fa-building"></i>&emsp; FİRMA GRUBU
+                            <label style="float:right;font-size:20px; "><i class="fas fa-angle-down"></i></label>
+                        </label>
+                    </span>
+                </a>
+                @if (@Context.Session.GetString("firmagrubuid") != null)
+                {
+                    <ul id="dene" class="altmenu nav navbar-form dropdown " style="font-size:13px;list-style-position:outside;background-color:aliceblue;" aria-labelledby="dropdownMenuOffset">
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-controller="Grup" asp-action="Detayi" asp-route-id="@Context.Session.GetString("firmagrubuid")"><i style="font-size:12px;" class="fab fa-audible"></i>&emsp; ÖZELLİKLERİ</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-action="Grupfirma" asp-controller="Firma" asp-route-id="@Context.Session.GetString("firmagrubuid")"><i class="fas fa-archway"></i>&emsp; FİRMALARI</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-action="Grupbirim" asp-controller="Birim" asp-route-id="@Context.Session.GetString("firmagrubuid")"><i class="fas fa-align-justify"></i>&emsp; BİRİMLERİ</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-action="Gruppersonel" asp-controller="Personel" asp-route-id="@Context.Session.GetString("firmagrubuid")"><i class="fas fa-users"></i>&emsp; PERSONELLERİ</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-action="Grupkullanici" asp-controller="Kullanici" asp-route-id="@Context.Session.GetString("firmagrubuid")"><i class="fas fa-user-tie"></i>&emsp;KULLANICILARI</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-action="Grupmuayene" asp-controller="Muayene" asp-route-id="@Context.Session.GetString("firmagrubuid")"><i class="fas fa-syringe"></i>&emsp;MUAYENELERİ</a>
+                        </li>
+
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+
+                            <a style="color:black;" asp-area="" asp-action="Grupegitim" asp-controller="Egitimler" asp-route-id="@Context.Session.GetString("firmagrubuid")"><i class="fas fa-book"></i>&emsp;EGİTİMLER</a>
+                        </li>
+                    </ul>
+                }
+
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Grup" asp-action="Index"><i class="fab fa-atlassian"></i>&emsp;FİRMA GRUPLARI</a>
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Ilactanimi" asp-action="Index"><i class="fas fa-pills"></i>&emsp;İLAÇ TANIMLARI </a>
+
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Tanitanimi" asp-action="Index"><i class="fas fa-diagnoses"></i>&emsp;TANI TANIMLARI</a>
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Statu" asp-action="Index"><i class="fas fa-prescription-bottle"></i>&emsp;STATU</a>
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Yetki" asp-action="Index"><i class="fas fa-book-reader"></i>&emsp;YETKİ KONTROLÜ</a>
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Grup" asp-action="Yönetim"><i class="fas fa-street-view"></i>&emsp;YÖNETİM</a>
+            </li>
+            <li style="height:5px;"></li>
+
+        </ul>
+    </div>
+}
+else if (@Context.Session.GetString("grubu") == "B")
+{
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-link list-group-item-success " style="background-color:honeydew;border-width:inherit;position:center">
+            <li class="menu" id="menuli">
+
+                @if (@Context.Session.GetString("firmaiid") == null)
+                {
+                    <a asp-action="Degis" asp-controller="Firma" style="font-size:10px;">FİRMAYI SEÇİNİZ</a>
+                }
+                else
+                {
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <span>
+                            <label style="font-size:20px;"> @Context.Session.GetString("firmaiid") / @Context.Session.GetString("firmaad") </label>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-default">
+
+                        <li>
+                            <a asp-action="Degis" asp-controller="Firma" style="font-size:10px;color:#645e5e">FİRMAYI DEĞİSTİR</a>
+                        </li>
+                    </ul>
+                }
+
+
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item dropdown dropdown-toggle dropdown-dark">
+                <a onclick="degistir()" id="menuli" asp-area="" asp-controller="" asp-action="" class="dropdown-header" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                    <span>
+                        <label style="color:black;width:300px;">
+                            <i class="fas fa-building"></i>&emsp; FİRMA
+                            <label style="float:right;font-size:20px; "><i class="fas fa-angle-down"></i></label>
+                        </label>
+                    </span>
+                </a>
+                @if (@Context.Session.GetString("firmaiid") != null)
+                {
+                    <ul id="dene" class="altmenu nav navbar-form dropdown " style="font-size:13px;list-style-position:outside;background-color:aliceblue;" aria-labelledby="dropdownMenuOffset">
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-controller="Firma" asp-action="Detayi" asp-route-id="@Context.Session.GetString("firmaiid")"><i style="font-size:12px;" class="fab fa-audible"></i>&emsp; ÖZELLİKLERİ</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-action="Firmabirim" asp-controller="Birim" asp-route-id="@Context.Session.GetString("firmaiid")"><i class="fas fa-align-justify"></i>&emsp; BİRİMLERİ</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-action="Firmapersonel" asp-controller="Personel" asp-route-id="@Context.Session.GetString("firmaiid")"><i class="fas fa-users"></i>&emsp; PERSONELLERİ</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-action="Firmamuayene" asp-controller="Muayene" asp-route-id="@Context.Session.GetString("firmaiid")"><i class="fas fa-syringe"></i>&emsp; MUAYENELERİ</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                    </ul>
+
+                }
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Firma" asp-action="Firmafirma"><i class="fab fa-atlassian"></i>&emsp;FİRMALAR</a>
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Kullanici" asp-action="Firmakullanici"><i class="fas fa-user-tie"></i>&emsp;KULLANICILAR</a>
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Egitimler" asp-action="Firmaegitim"><i class="fas fa-book"></i>&emsp;EĞİTİMLER</a>
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Ilactanimi" asp-action="Index"><i class="fas fa-pills"></i>&emsp;İLAÇ TANIMLARI </a>
+
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Tanitanimi" asp-action="Index"><i class="fas fa-diagnoses"></i>&emsp;TANI TANIMLARI</a>
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Statu" asp-action="Index"><i class="fas fa-prescription-bottle"></i>&emsp;STATU</a>
+            </li>
+
+            <li style="height:5px;"></li>
+
+        </ul>
+    </div>
+}
+
+
+
+else if (@Context.Session.GetString("grubu") == "C")
+{
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-link list-group-item-success " style="background-color:honeydew;border-width:inherit;position:center">
+            <li class="menu" id="menuli">
+
+                @if (@Context.Session.GetString("kfirmaid") == null)
+                {
+                    <a asp-action="kulFirmaDegis" asp-controller="Kullanicifirma" style="font-size:10px;">FİRMA GRUBU SEÇİNİZ</a>
+                }
+                else
+                {
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <span>
+                            <label style="font-size:20px;"> @Context.Session.GetString("kfirmaid") / @Context.Session.GetString("kfirmaad") </label>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-default">
+
+                        <li>
+                            <a asp-action="kulFirmaDegis" asp-controller="Kullanicifirma" style="font-size:10px;color:#645e5e">FİRMA GRUBUNU DEĞİSTİR</a>
+                        </li>
+                    </ul>
+                }
+
+
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item dropdown dropdown-toggle dropdown-dark">
+                <a onclick="degistir()" id="menuli" asp-area="" asp-controller="" asp-action="" class="dropdown-header" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                    <span>
+                        <label style="color:black;width:300px;">
+                            <i class="fas fa-building"></i>&emsp; FİRMA
+                            <label style="float:right;font-size:20px; "><i class="fas fa-angle-down"></i></label>
+                        </label>
+                    </span>
+                </a>
+                @if (@Context.Session.GetString("kfirmaid") != null)
+                {
+                    <ul id="dene" class="altmenu nav navbar-form dropdown " style="font-size:13px;list-style-position:outside;background-color:aliceblue;" aria-labelledby="dropdownMenuOffset">
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-controller="Kullanicifirma" asp-action="Detayi" asp-route-id="@Context.Session.GetString("kfirmaid")"><i style="font-size:12px;" class="fab fa-audible"></i>&emsp; ÖZELLİKLERİ</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-action="kullaniciFirmabirim" asp-controller="Birim" asp-route-id="@Context.Session.GetString("kfirmaid")"><i class="fas fa-align-justify"></i>&emsp; BİRİMLERİ</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-action="kullaniciFirmapersonel" asp-controller="Personel" asp-route-id="@Context.Session.GetString("kfirmaid")"><i class="fas fa-users"></i>&emsp; PERSONELLERİ</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-action="kullaniciFirmamuayene" asp-controller="Muayene" asp-route-id="@Context.Session.GetString("kfirmaid")"><i class="fas fa-syringe"></i>&emsp; MUAYENELERİ</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                    </ul>
+
+                }
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Firma" asp-action="KulFirma"><i class="fab fa-atlassian"></i>&emsp;FİRMALAR</a>
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Ilactanimi" asp-action="Index"><i class="fas fa-pills"></i>&emsp;İLAÇ TANIMLARI </a>
+
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Tanitanimi" asp-action="Index"><i class="fas fa-diagnoses"></i>&emsp;TANI TANIMLARI</a>
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Statu" asp-action="Index"><i class="fas fa-prescription-bottle"></i>&emsp;STATU</a>
+            </li>
+
+            <li style="height:5px;"></li>
+
+        </ul>
+    </div>
+}
+
+
+
+else if (@Context.Session.GetString("grubu") == "D")
+{
+    <div class="navbar-collapse collapse">
+        <ul class="nav navbar-link list-group-item-success " style="background-color:honeydew;border-width:inherit;position:center">
+            <li class="menu" id="menuli">
+
+                @if (@Context.Session.GetString("kfirmaid") == null)
+                {
+                    <a asp-action="kulFirmaDegis" asp-controller="Kullanicifirma" style="font-size:10px;">FİRMA GRUBU SEÇİNİZ</a>
+                }
+                else
+                {
+                    <a href="javascript:;" class="dropdown-toggle" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                        <span>
+                            <label style="font-size:20px;"> @Context.Session.GetString("kfirmaid") / @Context.Session.GetString("kfirmaad") </label>
+                        </span>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-default">
+
+                        <li>
+                            <a asp-action="kulFirmaDegis" asp-controller="Kullanicifirma" style="font-size:10px;color:#645e5e">FİRMA GRUBUNU DEĞİSTİR</a>
+                        </li>
+                    </ul>
+                }
+
+
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item dropdown dropdown-toggle dropdown-dark">
+                <a onclick="degistir()" id="menuli" asp-area="" asp-controller="" asp-action="" class="dropdown-header" data-toggle="dropdown" data-hover="dropdown" data-close-others="true">
+                    <span>
+                        <label style="color:black;width:300px;">
+                            <i class="fas fa-building"></i>&emsp; FİRMA
+                            <label style="float:right;font-size:20px; "><i class="fas fa-angle-down"></i></label>
+                        </label>
+                    </span>
+                </a>
+                @if (@Context.Session.GetString("kfirmaid") != null)
+                {
+                    <ul id="dene" class="altmenu nav navbar-form dropdown " style="font-size:13px;list-style-position:outside;background-color:aliceblue;" aria-labelledby="dropdownMenuOffset">
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-controller="Kullanicifirma" asp-action="Detayi" asp-route-id="@Context.Session.GetString("kfirmaid")"><i style="font-size:12px;" class="fab fa-audible"></i>&emsp; ÖZELLİKLERİ</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-action="kullaniciFirmabirim" asp-controller="Birim" asp-route-id="@Context.Session.GetString("kfirmaid")"><i class="fas fa-align-justify"></i>&emsp; BİRİMLERİ</a>
+                        </li>
+                        <li style="height:2px;"></li>
+                        <li id="altmenuli">
+                            <a style="color:black;" asp-area="" asp-action="kullaniciFirmapersonel" asp-controller="Personel" asp-route-id="@Context.Session.GetString("kfirmaid")"><i class="fas fa-users"></i>&emsp; PERSONELLERİ</a>
+                        </li>
+                        <li style="height:2px;"></li>
+
+                    </ul>
+
+                }
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Firma" asp-action="KulFirma"><i class="fab fa-atlassian"></i>&emsp;FİRMALAR</a>
+            </li>
+            <li style="height:5px;"></li>            
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Egitimler" asp-action="kulFirmaegitim"><i class="fas fa-book"></i>&emsp;EGİTİMLER </a>
+
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Ilactanimi" asp-action="Index"><i class="fas fa-pills"></i>&emsp;İLAÇ TANIMLARI </a>
+
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Tanitanimi" asp-action="Index"><i class="fas fa-diagnoses"></i>&emsp;TANI TANIMLARI</a>
+            </li>
+            <li style="height:5px;"></li>
+            <li class="nav-item">
+                <a style="color:black;" id="menuli" asp-area="" asp-controller="Statu" asp-action="Index"><i class="fas fa-prescription-bottle"></i>&emsp;STATU</a>
+            </li>
+
+            <li style="height:5px;"></li>
+
+        </ul>
+    </div>
+}
+
+
+
+
+
+

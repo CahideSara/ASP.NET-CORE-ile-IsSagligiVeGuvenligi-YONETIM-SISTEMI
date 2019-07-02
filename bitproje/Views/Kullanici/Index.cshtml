@@ -1,0 +1,65 @@
+﻿@model IEnumerable<bitproje.Entitys.Kullanici>
+
+@{
+    ViewData["Title"] = "Index";
+}
+
+
+<br />
+<br />
+<p>
+    &emsp; <a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="kullanıcı ekle"></i> &nbsp; YENİ KULLANICI EKLE</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                SİCİL NO
+            </th>
+            <th>
+                ADI
+            </th>
+            <th>
+                SOYADI
+            </th>
+            <th>
+                GÖREV TANIMI
+            </th>
+            <th>
+                DURUM
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sicilno)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Ad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Soyad)
+            </td>
+
+            <td>
+                @Html.DisplayFor(modelItem => item.Gorevtanim)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Durum)
+            </td>
+
+            <td>
+                <a asp-action="Edit" asp-route-id="@item.Sicilno"><i class="fas fa-edit" title="GÜNCELLE"></i></a> |
+                <a asp-action="Details" asp-route-id="@item.Sicilno"><i class="fas fa-info-circle" title="KULLANICI DETAYI"></i></a> |
+                <a asp-action="Delete" asp-route-id="@item.Sicilno"><i class="fas fa-trash-alt" title="KULLANICI SİL"></i></a>
+            </td>
+        </tr>
+        }
+    </tbody>
+</table>

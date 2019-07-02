@@ -1,0 +1,166 @@
+﻿@model Tuple<bitproje.Entitys.Kullanici, IEnumerable<bitproje.Entitys.KullaniciFirma>>
+@using Microsoft.AspNetCore.Http;
+
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    dt {
+        height: 28px;
+    }
+</style>
+<div>
+    <h4>KULLANICI</h4>
+    <hr />
+    <div class="col-md-6">
+
+        <dl class="dl-horizontal">
+            <dt>
+                SİCİL NUMARASI
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Sicilno)
+            </dd>
+            <dt>
+                TC
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Tc)
+            </dd>
+            <dt>
+                KULLANICI ADI
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Ad)
+            </dd>
+            <dt>
+                KULLANICI SOYADI
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Soyad)
+            </dd>
+            <dt>
+                GÖREV TANIMI
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Gorevtanim)
+            </dd>
+            <dt>
+                BOYU
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Boy)
+            </dd>
+            <dt>
+                KİLOSU
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Kilo)
+            </dd>
+            <dt>
+                KAN GRUBU
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Kangrup)
+            </dd>
+            <dt>
+                CİNSİYET
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Cinsiyet)
+            </dd>
+            <dt>
+                DOĞUM YERİ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Dogumyer)
+            </dd>
+            <dt>
+                DOĞUM TARİHİ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Dogumtarih)
+            </dd>
+            <dt>
+                ÖĞRENİM DURUMU
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Ogrenimdurum)
+            </dd>
+            <dt>
+                STATÜ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Statü)
+            </dd>
+            <dt>
+                İSG KURUL GÖREVİ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Isgkurulgorev)
+            </dd>
+            <dt>
+                İŞE BAŞLANGIÇ TARİHİ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Isebaslangictarih)
+            </dd>
+            <dt>
+                UNVANI
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Unvan)
+            </dd>
+            <dt>
+                DURUMU
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Durum)
+            </dd>
+        </dl>
+
+        <div>
+            @if (@Context.Session.GetString("grubu") == "A")
+            {<a asp-action="Grupkullanici">LİSTEYE GERİ DÖN</a><i> &emsp;|&emsp;</i>}
+            else if (@Context.Session.GetString("grubu") == "B")
+            {<a asp-action="Firmakullanici">LİSTEYE GERİ DÖN</a><i> &emsp;|&emsp;</i>}
+            <a asp-action="Edit" asp-route-id="@Model.Item1.Sicilno"><i class="fas fa-edit" title="GÜNCELLE"></i></a>
+
+        </div>
+    </div>
+    <div class="col-md-6 ">
+
+        <header style="font-family:Impact, 'Arial Narrow Bold'">KULLANICININ FİRMALARI&nbsp;:</header>
+        <br />
+        <table class="table" style="font-size:x-small">
+            <thead>
+                <tr>
+                    <th scope="col">FİRMA ID </th>
+                    <th scope="col">FİRMA AD</th>
+                    <th scope="col">İŞ VEREN KİŞİ</th>
+                    <th scope="col"></th>
+                </tr>
+            </thead>
+            <tbody>
+                @foreach (var f in Model.Item2)
+                {
+                    <tr>
+                        <td> @f.Firma.Firmaid</td>
+                        <td> @f.Firma.Funvan</td>
+                        <td> @f.Firma.Isvrnadsoyad</td>
+                        <td style="font-size:14px;">
+                            <a asp-action="FirmaCikar" asp-route-id="@f.Id"><i class="fas fa-minus-circle" title="FİRMAYI SİL"></i></a>
+                        </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+        <p>
+            &emsp; <a asp-action="FirmaEkle" asp-route-id="@Model.Item1.Sicilno"><i style="font-size:20px;" class="fas fa-plus-circle" title="firma ekle"></i> &nbsp; FİRMA EKLE</a>
+        </p>
+    </div>
+
+</div>
+

@@ -1,0 +1,170 @@
+﻿@model bitproje.Entitys.Firma
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+<style>
+
+
+    body {
+        font-family: Verdana, monospace, sans-serif;
+        font-size: 12px;
+        font-weight: bold;
+        text-align: justify;
+        min-height: 800px;
+        background: #52aa6f; /* Old browsers */
+        background: -moz-linear-gradient(top, #52aa6f 0%, #4096ee 100%); /* FF3.6+ */
+        background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#52aa6f), color-stop(100%,#4096ee)); /* Chrome,Safari4+ */
+        background: -webkit-linear-gradient(top, #52aa6f 0%,#4096ee 100%); /* Chrome10+,Safari5.1+ */
+        background: -o-linear-gradient(top, #52aa6f 0%,#4096ee 100%); /* Opera 11.10+ */
+        background: -ms-linear-gradient(top, #52aa6f 0%,#4096ee 100%); /* IE10+ */
+        background: linear-gradient(to bottom, #52aa6f 0%,#4096ee 100%); /* W3C */
+        filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#52aa6f', endColorstr='#4096ee',GradientType=0 ); /* IE6-9 */
+    }
+</style>
+
+
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - bitproje</title>
+
+
+    <environment include="Development">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.css" />
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.2.0/css/all.css"
+              integrity="sha384-hWVjflwFxL6sNzntih27bfxkr27PmbbK/iSvJ+a4+0owXq79v+lsFkW54bOGbiDQ"
+              crossorigin="anonymous" />
+    </environment>
+    <environment exclude="Development">
+        <link rel="stylesheet" href="https://ajax.aspnetcdn.com/ajax/bootstrap/3.3.7/css/bootstrap.min.css"
+              asp-fallback-href="~/lib/bootstrap/dist/css/bootstrap.min.css"
+              asp-fallback-test-class="sr-only" asp-fallback-test-property="position" asp-fallback-test-value="absolute" />
+        <link rel="stylesheet" href="~/css/site.min.css" asp-append-version="true" />
+    </environment>
+    <title>Login</title>
+</head>
+
+
+<body class="text-center">
+
+    <div>
+
+        <div class="col-md-1"></div>
+        <div class="col-md-10" style="background-color:white;border-radius: 40px;height:500px;">
+            <br />
+            <br />
+            <form method="post" asp-controller="Grup" asp-action="Kayit">
+                <div class="col-md-4">
+
+                    <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                    <div class="form-group">
+                        <label class="control-label">FİRMA AD*</label>
+                        <input asp-for="Funvan" class="form-control" required="" />
+                        <span asp-validation-for="Funvan" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">İŞ VEREN KİŞİ*</label>
+                        <input asp-for="Isvrnadsoyad" class="form-control" required="" />
+                        <span asp-validation-for="Isvrnadsoyad" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">İŞ VEREN GSM*</label>
+                        <input asp-for="Isvrngsm" class="form-control" required="" />
+                        <span asp-validation-for="Isvrngsm" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">FİRMA TELEFON*</label>
+                        <input asp-for="Firmatlfn" class="form-control" required="" />
+                        <span asp-validation-for="Firmatlfn" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">FAKS*</label>
+                        <input asp-for="Faks" class="form-control" required="" />
+                        <span asp-validation-for="Faks" class="text-danger"></span>
+                    </div>
+
+
+
+                </div>
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label class="control-label">FİRMA MAİL*</label>
+                        <input asp-for="Firmamail" class="form-control" required="" />
+
+                        <span asp-validation-for="Firmamail" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">İL*</label>
+                        <input asp-for="Il" class="form-control" required="" />
+                        <span asp-validation-for="Il" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">İLÇE*</label>
+                        <input asp-for="Ilce" class="form-control" required="" />
+                        <span asp-validation-for="Ilce" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">ADRES*</label>
+                        <input asp-for="Adres" class="form-control" required="" />
+                        <span asp-validation-for="Adres" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">FAALİYET ALANI*</label>
+                        <input asp-for="Faaliyetalan" class="form-control" required="" />
+                        <span asp-validation-for="Faaliyetalan" class="text-danger"></span>
+                    </div>
+                </div>
+                <div class="col-md-4">
+
+                    <div class="form-group">
+                        <label class="control-label">SGK SİCİL*</label>
+                        <input asp-for="Sgksicil" class="form-control" pattern="\d{23}" title="SGK SİCİL 23 haneli olmak zorunda" required="" />
+                        <span asp-validation-for="Sgksicil" class="text-danger"></span>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label">TEHLİKE SINIFI*</label>
+                        <select asp-for="Tehlikesinif" class="form-control">
+                            <option value="AZ TEHLİKELİ">AZ TEHLİKELİ</option>
+                            <option value="TEHLİKELİ">TEHLİKELİ</option>
+                            <option value="ÇOK TEHLİKELİ">ÇOK TEHLİKELİ</option>
+                        </select>
+                        <span asp-validation-for="Tehlikesinif" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="control-label">GRUP ŞİRKET ?</label>
+                        <select asp-for="Grupsirket" class="form-control">
+                            <option value="EVET">EVET</option>
+                            <option value="HAYIR">HAYIR</option>
+                        </select>
+                        <span asp-validation-for="Grupsirket" class="text-danger"></span>
+                    </div>
+
+                    <div class="form-group">
+                        &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                        <input type="submit" value="KAYIT OL" class="btn btn-info" />
+                    </div>
+                    @if (ViewBag.sonuc != null)
+                    {
+                        <p class="alert alert-success"> @ViewBag.sonuc</p>
+                    }
+                </div>
+            </form>
+            <div>
+
+            </div>
+            &emsp;&emsp;&emsp;
+            <a asp-action="ISGM" asp-controller="Home">
+
+                <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+            </a>
+        </div>
+    </div>
+</body>
+
+</html>

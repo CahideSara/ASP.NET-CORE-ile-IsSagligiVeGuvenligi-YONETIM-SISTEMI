@@ -1,0 +1,170 @@
+﻿@model bitproje.Entitys.Firma
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Edit";
+}
+
+<h4>FİRMA BİLGİLERİNİ GÜNCELLE</h4>
+<hr />
+<div class="row">
+    <form asp-action="Edit">
+        <div class="col-md-4">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Firmaid" />
+            <div class="form-group">
+                <label class="control-label">FİRMA AD</label>
+                <input asp-for="Funvan" class="form-control" />
+                <span asp-validation-for="Funvan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">İŞ VEREN KİŞİ</label>
+                <input asp-for="Isvrnadsoyad" class="form-control" />
+                <span asp-validation-for="Isvrnadsoyad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">İŞ VEREN GSM</label>
+                <input asp-for="Isvrngsm" class="form-control" />
+                <span asp-validation-for="Isvrngsm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">FİRMA TELEFON</label>
+                <input asp-for="Firmatlfn" class="form-control" />
+                <span asp-validation-for="Firmatlfn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">FAKS</label>
+                <input asp-for="Faks" class="form-control" />
+                <span asp-validation-for="Faks" class="text-danger"></span>
+            </div>
+
+
+
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">FİRMA MAİL</label>
+                <input asp-for="Firmamail" class="form-control" />
+                <span asp-validation-for="Firmamail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">İL</label>
+                <input asp-for="Il" class="form-control" />
+                <span asp-validation-for="Il" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">İLÇE</label>
+                <input asp-for="Ilce" class="form-control" />
+                <span asp-validation-for="Ilce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">ADRES</label>
+                <input asp-for="Adres" class="form-control" />
+                <span asp-validation-for="Adres" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">FAALİYET ALANI</label>
+                <input asp-for="Faaliyetalan" class="form-control" />
+                <span asp-validation-for="Faaliyetalan" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">SGK SİCİL</label>
+                <input asp-for="Sgksicil" class="form-control" />
+                <span asp-validation-for="Sgksicil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">TEHLİKE SINIFI</label>
+                <select asp-for="Tehlikesinif" class="form-control">
+                    <option value="AZ TEHLİKELİ">AZ TEHLİKELİ</option>
+                    <option value="TEHLİKELİ">TEHLİKELİ</option>
+                    <option value="ÇOK TEHLİKELİ">ÇOK TEHLİKELİ</option>
+                </select>
+                <span asp-validation-for="Tehlikesinif" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">GRUP ŞİRKET ?</label>
+                <select asp-for="Grupsirket" class="form-control">
+                    <option value="EVET">EVET</option>
+                    <option value="HAYIR">HAYIR</option>
+                </select>
+                <span asp-validation-for="Grupsirket" class="text-danger"></span>
+            </div>
+            @if (@Context.Session.GetString("grubu") == "A")
+            {
+                <div class="form-group">
+                    <label class="control-label">FİRMA GRUBU</label>
+                    @if (Model.Durum.Equals("ANA FİRMA"))
+                    {
+                        <a>ANA FİRMA  GRUBU DEGİŞTİRİLEMEZ</a>
+                    }
+                    else
+                    {
+                        <select asp-for="GrupId" class="form-control">
+                            @foreach (var k in ViewBag.Gruplar)
+                            {
+                                <option value="@k.GrupId">@k.Firmaid /  @k.Funvan   @k.Isvrnadsoyad  </option>
+                            }
+
+
+                        </select>
+                        <span asp-validation-for="GrupId" class="text-danger"></span>
+                    }
+                </div>
+            }
+            else if (@Context.Session.GetString("grubu") == "B")
+            {
+                <input type="hidden" asp-for="GrupId" />
+            }
+            else if (@Context.Session.GetString("grubu") == "C")
+            {
+                <input type="hidden" asp-for="GrupId" />
+            }
+            else if (@Context.Session.GetString("grubu") == "D")
+            {
+                <input type="hidden" asp-for="GrupId" />
+            }
+            <div class="form-group">
+                &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <input type="submit" style="background-color:#8f8fa0;font-weight:800" value="KAYDET" class="btn btn-default" />
+            </div>
+        </div>
+
+    </form>
+</div>
+
+
+<div>
+
+    @if (@Context.Session.GetString("grubu") == "A")
+    {
+        <a asp-action="Grupfirma">
+
+            <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    }
+    else if (@Context.Session.GetString("grubu") == "B")
+    {
+        <a asp-action="Firmafirma">
+
+            <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    }
+    else if (@Context.Session.GetString("grubu") == "C")
+    {
+        <a asp-action="KulFirma">
+
+            <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    }
+    else if (@Context.Session.GetString("grubu") == "D")
+    {
+        <a asp-action="KulFirma">
+
+            <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    }
+
+</div>
+

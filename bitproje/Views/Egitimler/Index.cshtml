@@ -1,0 +1,88 @@
+﻿@model IEnumerable<bitproje.Entitys.Egitimler>
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<p>
+    @if (@Context.Session.GetString("grubu") == "A")
+    {
+        <i>&emsp;</i><a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="egitim ekle"></i> &nbsp; YENİ EĞİTİM EKLE</a>
+    }
+    else if (@Context.Session.GetString("grubu") == "D")
+    {
+        <i>&emsp;</i><a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="egitim ekle"></i> &nbsp; YENİ EĞİTİM EKLE</a>
+    }
+
+</p>
+<br />
+@foreach (var item in Model)
+{
+    <div>
+        <div class="col-md-8">
+            <dl class="dl-horizontal">
+
+
+                <dt>
+                    EGİTMEN
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.kullanici.Sicilno)  / @Html.DisplayFor(modelItem => item.kullanici.Ad)  @Html.DisplayFor(modelItem => item.kullanici.Soyad) / @Html.DisplayFor(modelItem => item.kullanici.Gorevtanim)
+                </dd>
+                <dt>
+                    EGİTİM TARİHİ
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Egitimtrh)
+                </dd>
+                <dt>
+                    EGİTİM KONULARI
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Egitimkonulari)
+                </dd>
+                <dt>
+                    TOPLAM SÜRE
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Toplamsure)
+                </dd>
+                <dt>
+                    EGİTİM ALANI
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Egitimalani)
+                </dd>
+                <dt>
+                    AÇIKLAMA
+                </dt>
+                <dd>
+                    @Html.DisplayFor(modelItem => item.Aciklama)
+                </dd>
+
+            </dl>
+        </div>
+
+        <div class="col-md-4" style="font-size:20px;">
+
+
+            <a asp-action="Index" asp-controller="Katilimcilar" asp-route-id="@item.Egitimid"><i class="fas fa-users" title="KATILIMCILAR"></i></a><br />
+            @if (@Context.Session.GetString("grubu") == "A")
+            {
+                <i> &nbsp;</i><a asp-action="Edit" asp-route-id="@item.Egitimid"><i class="fas fa-edit" title="GÜNCELLE"></i></a> <br />
+                <i> &nbsp;</i><a asp-action="Delete" asp-route-id="@item.Egitimid"><i class="fas fa-trash-alt" title="EGİTİMİ SİL"></i></a>
+            }
+            else if (@Context.Session.GetString("grubu") == "D")
+            {
+                <i> &nbsp;</i><a asp-action="Edit" asp-route-id="@item.Egitimid"><i class="fas fa-edit" title="GÜNCELLE"></i></a> <br />
+                <i> &nbsp;</i><a asp-action="Delete" asp-route-id="@item.Egitimid"><i class="fas fa-trash-alt" title="EGİTİMİ SİL"></i></a>
+            }
+        </div>
+    </div>
+
+    <br />
+    <br />
+}
+

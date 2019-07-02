@@ -1,0 +1,52 @@
+﻿@model bitproje.Entitys.Recete
+@{
+    ViewData["Title"] = "Delete";
+}
+
+<h3>REÇETE </h3>
+<br />
+
+
+<div>
+    <h style="color:red;">BU REÇETEYİ SİLMEK İSTEDİĞİNİZE EMİN MİSİNİZ ?</h>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            REÇETE TARİHİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rtarihi)  
+        </dd>
+        <dt>
+            REÇETE TİPİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Rtipi)  
+        </dd>
+        <dt>
+            REÇETE ALT TİPİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ralttipi)  
+        </dd>
+        <dt>
+            PROVİZYON TİPİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Provizyontipi)  
+        </dd>
+        <dt>
+            SERİ NO
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Serino)  
+        </dd>
+    </dl>
+    <form asp-action="Delete">
+        <a href="/Muayene/Details/@Model.Mid">LİSTEYE GERİ DÖN</a> &emsp;|&emsp;
+        <input type="hidden" asp-for="Rid" />
+        <input type="submit" style="font-size:13px;font-weight:bold;height:27px;width:70px;" value="SİL" class="btn btn-danger" />
+
+    </form>
+</div>

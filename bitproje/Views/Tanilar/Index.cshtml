@@ -1,0 +1,55 @@
+﻿@model IEnumerable<bitproje.Entitys.Tanilar>
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<p>
+    &emsp;
+    @if (@Context.Session.GetString("grubu") == "A")
+    {
+        <a asp-action="Create" asp-route-id="@ViewBag.mid"><i style="font-size:20px;" class="fas fa-plus-circle" title="tanı ekle"></i> &nbsp; HASTA İÇİN TANI EKLE</a>
+    }
+    else if (@Context.Session.GetString("grubu") == "C")
+    {
+        <a asp-action="Create" asp-route-id="@ViewBag.mid"><i style="font-size:20px;" class="fas fa-plus-circle" title="tanı ekle"></i> &nbsp; HASTA İÇİN TANI EKLE</a>
+    }
+  
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+
+            <th>
+                TANI
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Tanim.Taniadi)
+                </td>
+                <td>
+                    @if (@Context.Session.GetString("grubu") == "A")
+                    {
+                        <a asp-action="Delete" asp-route-id="@item.Taniid"><i class="fas fa-trash-alt" title="TANIYI CIKAR"></i></a>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    <a asp-action="Details" asp-controller="Muayene" asp-route-id="@ViewBag.mid">
+
+        <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+    </a>
+</div>

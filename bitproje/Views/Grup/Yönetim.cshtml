@@ -1,0 +1,89 @@
+﻿@model IEnumerable<bitproje.Entitys.Users>
+
+@{
+    ViewData["Title"] = "Yönetim";
+}
+
+<h2>Yönetim</h2>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                YETKİ
+            </th>
+            <th>
+                KULLANICI ADI
+            </th>
+            <th>
+                GRUBU
+            </th>
+            <th>
+                ŞİFRE
+            </th>
+
+            <th>
+                FİRMA İD
+            </th>
+            <th>
+                SİCİL NO
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+@foreach (var item in Model) {
+        <tr>
+            <td>
+                @if (item.Grubu == "A")
+                {
+                    <p>ADMİN</p>
+                }
+                else if (item.Grubu == "B")
+                {
+                    <p>FİRMA</p>
+                }
+                else if (item.Grubu == "C")
+                {
+                    <p>HEKİM</p>
+                }
+                else
+                {
+                    <p>UZMAN</p>
+                }
+
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Kullaniciadi)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Grubu)
+            </td>
+            <td>
+                @if (item.Sifre == "sıfırIsgm")
+                {
+                    @Html.DisplayFor(modelItem => item.Sifre)
+                }
+                else
+                {
+                    <i>*****</i>
+                }
+
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Firmaid)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Sicilno)
+            </td>
+            <td>
+
+                <a asp-action="SifreSifirla" asp-controller="Register" asp-route-id="@item.Id">SİFREYİ SIFIRLA</a> &nbsp;
+            </td>
+        </tr>
+}
+    </tbody>
+</table>
+<br/>
+<p style="font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;">NOT : ŞİFRE SIFIRLANDIĞI ZAMAN YENİ ŞİFRE OTOMATİK OLARAK  &emsp;<a style="color:red;">'sıfırIsgm'</a>&emsp; OLACAKTIR..</p>

@@ -1,0 +1,74 @@
+﻿
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta http-equiv="content-type" content="text/html;charset=utf-8" />
+    <title>İSGM</title>
+
+    <!-- Insert to your webpage before the </head> -->
+    <script src="sliderengine/jquery.js"></script>
+    <script src="sliderengine/amazingslider.js"></script>
+    <link rel="stylesheet" type="text/css" href="sliderengine/amazingslider-1.css">
+    <script src="sliderengine/initslider-1.js"></script>
+    <!-- End of head section HTML codes -->
+
+</head>
+<body>
+    <div>
+        <br />
+
+        <div style="background-color:#222222;height:100px;border-radius: 20px;">
+            
+                <br />
+
+                <img style="height:65px;" src="~/images/den.png" />
+
+
+            <div  style="width:210px;height:50px;float:right">
+               
+                    <br />
+                    <a style="background-color:#ffd800;color:black; border-radius: 10px;font-size:20px;height:55px;width:80px; text-decoration: none;" asp-controller="Users" asp-action="Index"> &nbsp;GİRİŞ &nbsp;</a>
+                    <a style="background-color:#ffd800;color:black; border-radius: 10px;font-size:20px;height:55px;width:80px; text-decoration: none;" asp-controller="Grup" asp-action="Kayit"> &nbsp;KAYIT OL &nbsp;</a>
+
+                
+            </div>
+        </div>
+        <br />
+        <br />
+        <br />
+
+        <!-- Insert to your webpage where you want to display the slider -->
+        <div id="amazingslider-wrapper-1" style="display:block;position:relative;max-width:1000px;margin:0px auto 56px;">
+            <div id="amazingslider-1" style="display:block;position:relative;margin:0 auto;">
+                <ul class="amazingslider-slides" style="display:none;">
+                    <li>
+                        <img src="images/isg.png" alt="isgm" title="isgm" />
+                    </li>
+                    <li>
+                        <img src="images/isg2.jpg" alt="isgm" title="isgm" />
+                    </li>
+                    <li>
+                        <img src="images/isg3.jpg" alt="isgm" title="isgm" />
+                    </li>
+                    <li>
+                        <img src="images/slide1.jpg" alt="isgm" title="isgm" />
+                    </li>
+                </ul>
+                <ul class="amazingslider-thumbnails" style="display:none;">
+                    <li><img src="images/isg-tn.png" alt="isgm" title="isgm" /></li>
+                    <li><img src="images/isg2-tn.jpg" alt="isgm" title="isgm" /></li>
+                    <li><img src="images/isg3-tn.jpg" alt="isgm" title="isgm" /></li>
+                    <li><img src="images/slide1-tn.jpg" alt="isgm" title="isgm" /></li>
+                </ul>
+                
+            </div>
+        </div>
+        <!-- End of body section HTML codes -->
+    </div>
+</body>
+</html>

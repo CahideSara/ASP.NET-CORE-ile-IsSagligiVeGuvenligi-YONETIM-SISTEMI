@@ -1,0 +1,195 @@
+﻿@model Tuple<bitproje.Entitys.Muayene, bitproje.Entitys.Recete>
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    dt {
+        height: 28px;
+    }
+</style>
+<div>
+    <div class="col-md-5">
+        <h4>MUAYENE</h4>
+
+        <dl class="dl-horizontal">
+            <dt>
+                MUAYENEYİ YAPAN
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.SicilnoNavigation.Sicilno) / @Html.DisplayFor(model => model.Item1.SicilnoNavigation.Ad)  @Html.DisplayFor(model => model.Item1.SicilnoNavigation.Soyad)
+            </dd>
+            <dt>
+                MUAYENE OLAN
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.SicilnopNavigation.Sicilnop) / @Html.DisplayFor(model => model.Item1.SicilnopNavigation.Ad)  @Html.DisplayFor(model => model.Item1.SicilnopNavigation.Soyad)
+            </dd>
+            <dt>
+                MUAYENE NEDENİ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Mneden)
+            </dd>
+            <dt>
+                MUAYENE TARİHİ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Mtarihi)
+            </dd>
+            <dt>
+                SONRAKİ MUAYENE TARİHİ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Sonrakimtarih)
+            </dd>
+            <dt>
+                ANNE HASTALIK GEÇMİŞİ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Annehastalikg)
+            </dd>
+            <dt>
+                BABA HASTALIK GEÇMİŞİ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Babahastalikg)
+            </dd>
+            <dt>
+                KARDEŞ HASTALIK GEÇMİŞİ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Kardeshastalikg)
+            </dd>
+            <dt>
+                ÇOCUK HASTALIK GEÇMİŞİ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Cocukhastalikg)
+            </dd>
+            <dt>
+                BÜYÜK TANSİYON
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Büyüktan)
+            </dd>
+            <dt>
+                KÜÇÜK TANSİYON
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Kücüktan)
+            </dd>
+            <dt>
+                NABIZ
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Nabiz)
+            </dd>
+            <dt>
+                KİLO
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Kilo)
+            </dd>
+            <dt>
+                BOY
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Boy)
+            </dd>
+            <dt>
+                KAN GRUP
+            </dt>
+            <dd>
+                @Html.DisplayFor(model => model.Item1.Kangrup)
+            </dd>
+
+        </dl>
+        <div>
+            @if (@Context.Session.GetString("grubu") == "A")
+            {
+                <a asp-action="Grupmuayene">LİSTEYE GERİ DÖN</a>
+                <i>&emsp;|&emsp;</i> <a asp-action="Edit" asp-route-id="@Model.Item1.Mid"><i class="fas fa-edit" title="GÜNCELLE"></i></a>
+            }
+            else if (@Context.Session.GetString("grubu") == "B")
+            {
+                <a asp-action="Firmamuayene">LİSTEYE GERİ DÖN</a>
+            }
+            else if (@Context.Session.GetString("grubu") == "C")
+            {
+                <a asp-action="kullaniciFirmamuayene">LİSTEYE GERİ DÖN</a>
+                <i>&emsp;|&emsp;</i> <a asp-action="Edit" asp-route-id="@Model.Item1.Mid"><i class="fas fa-edit" title="GÜNCELLE"></i></a>
+            }
+          
+
+        </div>
+    </div>
+
+    <div class="col-md-7">
+        <br />
+        @if (ViewBag.bos != null)
+        {
+            <table border="1" style="width:500px;height:500px;font-size:small">
+                <tr style="width:300px;height:40px;">
+                    <td colspan="2" style="text-align:center;font-size:20px;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">REÇETE</td>
+                </tr>
+
+                <tr style="height:40px;">
+                    <td>RECETE İD &nbsp;:&nbsp;@Html.DisplayFor(model => model.Item2.Rid)</td>
+                    <td>RECETE TARİHİ &nbsp;:&nbsp;@Html.DisplayFor(model => model.Item2.Rtarihi)</td>
+                </tr>
+
+                <tr style="height:40px;">
+                    <td>RECETE TİPİ &nbsp;:&nbsp;@Html.DisplayFor(model => model.Item2.Rtipi)</td>
+                    <td>RECETE ALT TİPİ &nbsp;:&nbsp;@Html.DisplayFor(model => model.Item2.Ralttipi)</td>
+                </tr>
+                <tr style="height:40px;">
+                    <td>PROVİZYON TİPİ &nbsp;:&nbsp;@Html.DisplayFor(model => model.Item2.Provizyontipi)</td>
+                    <td>SERİ NO &nbsp;:&nbsp;@Html.DisplayFor(model => model.Item2.Serino)</td>
+                </tr>
+
+                <tr style="height:40px;">
+                    <td colspan="2">TANILAR  &nbsp;:&nbsp;&emsp;&emsp;&emsp;<a style="text-align:center;font-size:15px;color:#a40202" asp-action="Index" asp-controller="Tanilar" asp-route-id="@Model.Item1.Mid">TANILAR İÇİN TIKLA</a></td>
+                </tr>
+                <tr style="height:25px;">
+                    <td colspan="2" style="text-align:center;font-size:15px;font-family:Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif">İLAÇLAR</td>
+                </tr>
+                <tr style="height:80px;">
+                    <td colspan="2" style="text-align:center;"><a style="font-size:15px;color:#a40202" asp-action="Index" asp-controller="ReceteIlac" asp-route-id="@Model.Item2.Rid">İLAÇLAR İÇİN TIKLA</a></td>
+                </tr>
+                <tr style="height:40px;text-align:center;">
+                    <td colspan="2">
+                        @if (@Context.Session.GetString("grubu") == "A")
+                        {
+                            <a asp-controller="Recete" asp-action="Edit" asp-route-id="@Model.Item2.Rid"><i class="fas fa-edit" title="GÜNCELLE"></i></a><i>|</i>
+                            <a asp-controller="Recete" asp-action="Delete" asp-route-id="@Model.Item2.Rid"><i class="fas fa-trash-alt" title="RECETEYİ SİL"></i></a>
+                        }
+                        else if (@Context.Session.GetString("grubu") == "C")
+                        {
+                            <a asp-controller="Recete" asp-action="Edit" asp-route-id="@Model.Item2.Rid"><i class="fas fa-edit" title="GÜNCELLE"></i></a><i>|</i>
+                            <a asp-controller="Recete" asp-action="Delete" asp-route-id="@Model.Item2.Rid"><i class="fas fa-trash-alt" title="RECETEYİ SİL"></i></a>
+                        }
+                      
+                    </td>
+                </tr>
+            </table>
+
+        }
+        else
+        {
+            @if (@Context.Session.GetString("grubu") == "A")
+            {
+                <a asp-controller="Recete" asp-action="Create" asp-route-id="@Model.Item1.Mid"><i style="font-size:20px;" class="fas fa-plus-circle" title="recete ekle"></i> &nbsp; RECETE EKLE</a>
+            }
+            else if (@Context.Session.GetString("grubu") == "C")
+            {
+                <a asp-controller="Recete" asp-action="Create" asp-route-id="@Model.Item1.Mid"><i style="font-size:20px;" class="fas fa-plus-circle" title="recete ekle"></i> &nbsp; RECETE EKLE</a>
+            }
+          
+        }
+    </div>
+</div>
+
+

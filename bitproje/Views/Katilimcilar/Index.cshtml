@@ -1,0 +1,68 @@
+﻿@model IEnumerable<bitproje.Entitys.Katilimcilar>
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+
+<p>
+    @if (@Context.Session.GetString("grubu") == "A")
+    {
+    <i>&emsp;</i> <a asp-action="Create" asp-route-id="@ViewBag.egitimid"><i style="font-size:20px;" class="fas fa-plus-circle" title="ilaç ekle"></i> &nbsp;KATILIMCI EKLE</a>
+    }
+ </p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                KATILIMCI PERSONEL
+            </th>
+            <th>
+                BAŞARI YÜZDESİ
+            </th>
+            @if (@Context.Session.GetString("grubu") == "A")
+            {
+                <th></th>
+            }
+            </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.personel.Sicilnop) /  @Html.DisplayFor(modelItem => item.personel.Ad)  @Html.DisplayFor(modelItem => item.personel.Soyad)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Basariyuzdesi)
+            </td>
+
+            @if (@Context.Session.GetString("grubu") == "A")
+            {
+                <td>
+
+                    <a asp-action="Delete" asp-route-id="@item.Katilimid"><i class="fas fa-trash-alt" title="KATILIMCIYI ÇIKAR"></i></a>
+                </td>
+            }
+            </tr>
+        }
+    </tbody>
+</table>
+<div>
+    @if (@Context.Session.GetString("grubu") == "A")
+    {
+        <a asp-action="Grupegitim" asp-controller="Egitimler">
+
+            <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    }
+    else if (@Context.Session.GetString("grubu") == "B")
+    {
+        <a asp-action="Firmaegitim" asp-controller="Egitimler">
+
+            <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    }
+</div>

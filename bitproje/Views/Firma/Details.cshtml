@@ -1,0 +1,136 @@
+﻿@model bitproje.Entitys.Firma
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    dt {
+        height: 28px;
+    }
+</style>
+<div>
+    <h4>FİRMA </h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            FİRMA İD
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Firmaid)
+        </dd>
+        <dt>
+            FİRMA AD
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Funvan)
+        </dd>
+        <dt>
+            İŞ VEREN KİŞİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Isvrnadsoyad)
+        </dd>
+        <dt>
+            İŞ VEREN GSM
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Isvrngsm)
+        </dd>
+        <dt>
+            FİRMA TELEFON
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Firmatlfn)
+        </dd>
+        <dt>
+            FAKS
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Faks)
+        </dd>
+        <dt>
+            FİRMA MAİL
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Firmamail)
+        </dd>
+        <dt>
+            İL
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Il)
+        </dd>
+        <dt>
+            İLÇE
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ilce)
+        </dd>
+        <dt>
+            ADRES
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+        <dt>
+            FAALİYET ALANI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Faaliyetalan)
+        </dd>
+        <dt>
+            SGK SİCİL
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sgksicil)
+        </dd>
+        <dt>
+            TEHLİKE SINIFI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tehlikesinif)
+        </dd>
+        <dt>
+            GRUP ŞİRKET ?
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Grupsirket)
+        </dd>
+        <dt>
+            DURUMU
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Durum)
+        </dd>
+
+        <!--   <dt>
+            FİRMA GRUBU
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Grup.GrupId) / @Html.DisplayFor(model => model.Grup.GrupAd)
+        </dd>
+         --->
+    </dl>
+</div>
+<div>
+    @if (@Context.Session.GetString("grubu") == "A")
+    {<a asp-action="Grupfirma">LİSTEYE GERİ DÖN</a> <i>&emsp;|&emsp;</i>}
+    else if (@Context.Session.GetString("grubu") == "B")
+    { <a asp-action="Firmafirma">LİSTEYE GERİ DÖN</a> <i>&emsp;|&emsp;</i>}
+    else if (@Context.Session.GetString("grubu") == "C")
+    { <a asp-action="KulFirma">LİSTEYE GERİ DÖN</a> <i>&emsp;|&emsp;</i>}
+    else if (@Context.Session.GetString("grubu") == "D")
+    { <a asp-action="KulFirma">LİSTEYE GERİ DÖN</a> <i>&emsp;|&emsp;</i>}
+
+    @if (@Context.Session.GetString("grubu") == "A")
+    {<a asp-action="Edit" asp-route-id="@Model.Firmaid"><i class="fas fa-edit" title="GÜNCELLE"></i></a> }
+    else if (@Context.Session.GetString("grubu") == "B" && @Context.Session.GetString("firmafirmaguncel") == true.ToString())
+    {<a asp-action="Edit" asp-route-id="@Model.Firmaid"><i class="fas fa-edit" title="GÜNCELLE"></i></a> }
+    else if (@Context.Session.GetString("grubu") == "C" && @Context.Session.GetString("hekimfirmaguncel") == true.ToString())
+    {<a asp-action="Edit" asp-route-id="@Model.Firmaid"><i class="fas fa-edit" title="GÜNCELLE"></i></a> }
+    else if (@Context.Session.GetString("grubu") == "D" && @Context.Session.GetString("uzmanfirmaguncel") == true.ToString())
+    {<a asp-action="Edit" asp-route-id="@Model.Firmaid"><i class="fas fa-edit" title="GÜNCELLE"></i></a> }
+
+
+</div>

@@ -1,0 +1,326 @@
+﻿@model bitproje.Entitys.Firma
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Detayi";
+}
+
+<style>
+
+    ul.aa {
+        list-style: none;
+        display: block;
+    }
+
+    #mn a {
+        position: relative;
+        display: inline;
+        margin: 10px;
+        text-align: center;
+        width: 150px;
+        background-color: black;
+        border-radius: 20px;
+    }
+
+    #menu a {
+        width: 150px;
+        height: 150px;
+        display: inline-block;
+        margin: 15px;
+        padding: 15px;
+        background-color: #222222;
+        text-decoration: none;
+        border-radius: 20px;
+        text-align: center;
+        color: white;
+        font-size: 80px;
+    }
+
+    .flip-content {
+        transition: 0.6s;
+        transform-style: preserve-3d;
+        position: relative
+    }
+
+    .flip-content, .front, .back {
+        width: 300px;
+        height: 300px
+    }
+
+    .front, .back {
+        position: absolute;
+        top: 0;
+        left: 0;
+        backface-visibility: hidden;
+        background-color: #eee
+    }
+
+    .front {
+        z-index: 1
+    }
+
+
+    .back {
+        transform: rotateX(180deg)
+    }
+
+    .flipper:hover .flip-content {
+        transform: rotateX(-180deg)
+    }
+
+    .flipper {
+        perspective: 1000px
+    }
+</style>
+
+<style>
+
+
+    .download,
+    ul.features > li:before {
+        background-color: #80A060;
+    }
+
+    a.download {
+        position: absolute;
+        top: 1em;
+        left: -1.5em;
+        width: 7em;
+        height: 7em;
+        padding: 1.2em 0;
+        background-image: linear-gradient(transparent, rgba(0,0,0,.3));
+        color: white;
+        line-height: 1;
+        font-size: 120%;
+        font-weight: normal;
+        text-align: center;
+        text-decoration: none;
+        text-shadow: .08em .08em .2em rgba(0,0,0,.6);
+        border-radius: 50%;
+        box-shadow: .1em .2em .4em -.2em black;
+        box-sizing: border-box;
+        transform: rotate(15deg);
+        animation: 3s colorcycle infinite alternate;
+    }
+
+        a.download:hover {
+            transform: rotate(375deg);
+            transition: 1s transform;
+        }
+
+        a.download > strong {
+            display: block;
+            margin: .1em 0;
+            font-size: 180%;
+            white-space: nowrap;
+        }
+
+
+
+
+    .panelp {
+        width: 300px;
+        height: 80px;
+        top: 20%;
+        border-radius: 5px;
+        -moz-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+        -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+        box-shadow: 0 10px 5px 5px 5px rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 20px;
+        text-align: center;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+        display: flex;
+        background-color: white;
+    }
+
+
+
+    .panelb {
+        width: 400px;
+        height: 500px;
+        top: 20%;
+        background-color: white;
+        border-radius: 5px;
+        -moz-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+        -webkit-box-shadow: 0 20px 30px rgba(0, 0, 0, 0.6);
+        box-shadow: 0 10px 20px rgba(0, 0, 0, 0.6);
+        border: 1px solid rgba(255, 255, 255, 0.3);
+        padding: 20px;
+        text-align: center;
+        text-shadow: 0 1px 1px rgba(0, 0, 0, 0.4);
+        display: flex;
+    }
+
+    dt {
+        height: 19px;
+    }
+
+    a.oku {
+        font-weight: bold;
+        color: maroon;
+        font-style: oblique;
+        font-family: Arial, Helvetica, sans-serif;
+        text-decoration: none;
+        vertical-align: baseline;
+    }
+
+        a.oku:hover {
+            font-weight: bold;
+            color: maroon;
+            font-style: oblique;
+            font-family: Arial, Helvetica, sans-serif;
+            text-decoration: none;
+            vertical-align: baseline;
+        }
+
+    dt {
+        height: 26px;
+    }
+</style>
+<br />
+<div class="col-md-1  ">
+
+</div>
+<div class="col-md-6 container-fluid ">
+
+    <div class="panelb">
+        <div>
+            <div>
+                <h5 style="color:#90adad;">FİRMA</h5>
+                <hr />
+                <dl class="dl-horizontal">
+                    <dt>
+                        FİRMA İD
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Firmaid)
+                    </dd>
+                    <dt>
+                        FİRMA AD
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Funvan)
+
+                    </dd>
+                    <dt>
+                        İŞ VEREN KİŞİ
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Isvrnadsoyad)
+                    </dd>
+                    <dt>
+                        İŞ VEREN GSM
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Isvrngsm)
+                    </dd>
+                    <dt>
+                        FİRMA TELEFON
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Firmatlfn)
+                    </dd>
+                    <dt>
+                        FAKS
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Faks)
+                    </dd>
+                    <dt>
+                        FİRMA MAİL
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Firmamail)
+                    </dd>
+                    <dt>
+                        İL
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Il)
+                    </dd>
+                    <dt>
+                        İLÇE
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Ilce)
+                    </dd>
+                    <dt>
+                        ADRES
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Adres)
+                    </dd>
+                    <dt>
+                        FAALİYET ALANI
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Faaliyetalan)
+                    </dd>
+                    <dt>
+                        SGK SİCİL
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Sgksicil)
+                    </dd>
+                    <dt>
+                        TEHLİKE SINIFI
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Tehlikesinif)
+                    </dd>
+                    <dt>
+                        GRUP ŞİRKET ?
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Grupsirket)
+                    </dd>
+
+                    <dt>
+                        DURUMU
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(model => model.Durum)
+                    </dd>
+
+
+                </dl>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="col-md-5  ">
+    <div>
+        <a asp-action="Firmapersonel" class="oku" asp-controller="Personel" asp-route-id="@Model.Firmaid">
+            <div class="panelp ">
+                <p>
+                    <div class="col-md-6 container-fluid"><i style="font-size:40px;color:#90adad;" class="fas fa-users"></i></div>
+                    <div class="col-md-6"><i style="font-size:10px;font-weight: bold;color:#90adad;">&emsp;<i style="font-size:15px;">@ViewBag.percount</i>  <br />PERSONELLERİ </i></div>
+                </p>
+            </div>
+        </a>
+    </div>
+    <br />
+    <div>
+        <a asp-action="Firmabirim" class="oku" asp-controller="Birim" asp-route-id="@Model.Firmaid">
+            <div class="panelp ">
+                <p>
+                    <div class="col-md-6 container-fluid"><i style="font-size:40px; color:#90adad;" class="fas fa-align-justify"></i></div>
+                    <div class="col-md-6"><i style="font-size:10px;font-weight: bold;color:#90adad;">&emsp;&emsp;&emsp;<i style="font-size:15px;">@ViewBag.birimcount </i>  <br />BİRİMLERİ</i></div>
+                </p>
+            </div>
+        </a>
+    </div>
+    <br />
+    <div>
+        <a asp-action="Firmamuayene" class="oku" asp-controller="Muayene" asp-route-id="@Model.Firmaid">
+            <div class="panelp ">
+                <p>
+                    <div class="col-md-6 container-fluid"><i style="font-size:40px; color:#90adad;" class="fas fa-user-md"></i></div>
+                    <div class="col-md-6"><i style="font-size:10px;font-weight: bold;color:#90adad;">&emsp;&emsp;&emsp;<i style="font-size:15px;">@ViewBag.muayenecount </i>  <br />MUAYENELERİ</i></div>
+                </p>
+            </div>
+        </a>
+    </div>
+</div>
+
+

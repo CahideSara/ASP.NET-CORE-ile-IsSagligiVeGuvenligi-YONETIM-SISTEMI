@@ -1,0 +1,140 @@
+﻿@model bitproje.Entitys.Firma
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    dt {
+        height: 28px;
+    }
+</style>
+<h3>Firma</h3>
+<br />
+
+<div>
+    <h style="color:red;">BU FİRMAYI SİLMEK İSTEDİĞİNİZE EMİN MİSİNİZ ?</h>
+    <hr />
+    <dl class="dl-horizontal">
+
+        <dt>
+            FİRMA AD
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Funvan)
+        </dd>
+        <dt>
+            İŞ VEREN KİŞİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Isvrnadsoyad)
+        </dd>
+        <dt>
+            İŞ VEREN GSM
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Isvrngsm)
+        </dd>
+        <dt>
+            FİRMA TELEFON
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Firmatlfn)
+        </dd>
+        <dt>
+            FAKS
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Faks)
+        </dd>
+        <dt>
+            FİRMA MAİL
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Firmamail)
+        </dd>
+        <dt>
+            İL
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Il)
+        </dd>
+        <dt>
+            İLÇE
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ilce)
+        </dd>
+        <dt>
+            ADRES
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+        <dt>
+            FAALİYET ALANI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Faaliyetalan)
+        </dd>
+        <dt>
+            SGK SİCİL
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sgksicil)
+        </dd>
+        <dt>
+            TEHLİKE SINIFI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tehlikesinif)
+        </dd>
+        <dt>
+            GRUP ŞİRKET ?
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Grupsirket)
+        </dd>
+        <dt>
+            DURUMU
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Durum)
+        </dd>
+       
+
+    </dl>
+
+    <form asp-action="Delete">
+        @if (@Context.Session.GetString("grubu") == "A")
+        {
+            <a asp-action="Grupfirma">LİSTEYE GERİ DÖN</a> <i>&emsp;|&emsp;</i>
+        }
+        else if (@Context.Session.GetString("grubu") == "B")
+        {
+            <a asp-action="Firmafirma">LİSTEYE GERİ DÖN</a> <i>&emsp;|&emsp;</i>
+        }
+        else if (@Context.Session.GetString("grubu") == "C")
+        {
+            <a asp-action="KulFirma">LİSTEYE GERİ DÖN</a> <i>&emsp;|&emsp;</i>
+        }
+        else if (@Context.Session.GetString("grubu") == "D")
+        {
+            <a asp-action="KulFirma">LİSTEYE GERİ DÖN</a> <i>&emsp;|&emsp;</i>
+        }
+        <input type="hidden" asp-for="Firmaid" />
+        @if (Model.Durum.Equals("ANA FİRMA"))
+        {
+            <a style="font-size:13px;font-weight:bold;height:27px;width:70px;">ANA FİRMAYI SADECE VERİTABANINDAN SİLEBİLİRSİNİZ</a>
+        }
+        else
+        {
+            <input type="submit" style="font-size:13px;font-weight:bold;height:27px;width:70px;" value="SİL" class="btn btn-danger" />
+        }
+
+
+
+
+    </form>
+</div>

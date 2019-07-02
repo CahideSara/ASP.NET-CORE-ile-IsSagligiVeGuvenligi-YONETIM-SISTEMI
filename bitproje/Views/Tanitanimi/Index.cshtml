@@ -1,0 +1,51 @@
+﻿@model IEnumerable<bitproje.Entitys.Tanitanimi>
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+
+<p>
+    @if (@Context.Session.GetString("grubu") == "A")
+    {<i>&emsp;</i> <a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="tanı ekle"></i> &nbsp; YENİ TANI EKLE</a>}
+    else if (@Context.Session.GetString("grubu") == "B" && @Context.Session.GetString("firmataniekle") == true.ToString())
+    { <i>&emsp;</i> <a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="tanı ekle"></i> &nbsp; YENİ TANI EKLE</a>}
+    else if (@Context.Session.GetString("grubu") == "C" && @Context.Session.GetString("hekimtaniekle") == true.ToString())
+    { <i>&emsp;</i> <a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="tanı ekle"></i> &nbsp; YENİ TANI EKLE</a>}
+    else if (@Context.Session.GetString("grubu") == "D" && @Context.Session.GetString("uzmantaniekle") == true.ToString())
+    { <i>&emsp;</i> <a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="tanı ekle"></i> &nbsp; YENİ TANI EKLE</a>}
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                TANİ ADI
+            </th>
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Taniadi)
+                </td>
+                <td>
+                    @if (@Context.Session.GetString("grubu") == "A")
+                    {<a asp-action="Delete" asp-route-id="@item.Tanitid"><i class="fas fa-trash-alt" title="TANI SİL"></i></a> }
+                    else if (@Context.Session.GetString("grubu") == "B" && @Context.Session.GetString("firmatanisil") == true.ToString())
+                    {<a asp-action="Delete" asp-route-id="@item.Tanitid"><i class="fas fa-trash-alt" title="TANI SİL"></i></a> }
+                    else if (@Context.Session.GetString("grubu") == "C" && @Context.Session.GetString("hekimtanisil") == true.ToString())
+                    {<a asp-action="Delete" asp-route-id="@item.Tanitid"><i class="fas fa-trash-alt" title="TANI SİL"></i></a> }
+                    else if (@Context.Session.GetString("grubu") == "D" && @Context.Session.GetString("uzmantanisil") == true.ToString())
+                    {<a asp-action="Delete" asp-route-id="@item.Tanitid"><i class="fas fa-trash-alt" title="TANI SİL"></i></a> }
+                    
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

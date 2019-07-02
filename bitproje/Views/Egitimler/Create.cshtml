@@ -1,0 +1,107 @@
+﻿@model bitproje.Entitys.Egitimler
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+
+<h4>EGİTİM EKLE</h4>
+<hr />
+<div class="row">
+    <form asp-action="Create">
+        <div class="col-md-4">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+
+            @if (@Context.Session.GetString("grubu") == "A")
+            {
+                <div class="form-group">
+                    <label class="control-label">EGİTMEN</label>
+                    <select asp-for="Sicilno" class="form-control select">
+                        @foreach (var k in ViewBag.mkullanici)
+                        {
+                            <option value="@k.Sicilno">@k.Sicilno  /  @k.Ad   @k.Soyad  /  @k.Gorevtanim</option>
+                        }
+                    </select>
+                </div>
+            }
+            else if (@Context.Session.GetString("grubu") == "D")
+            {
+                <div class="form-group">
+                    <label class="control-label">EGİTMEN</label>
+                    <br />
+                    <p>" @Model.kullanici.Sicilno  / @Model.kullanici.Ad   @Model.kullanici.Soyad  "   </p>
+                </div>
+                <input type="hidden" asp-for="Sicilno" />
+            }
+
+
+
+            <div class="form-group">
+                <label class="control-label">EGİTİM TARİHİ</label>
+                <input asp-for="Egitimtrh" class="form-control" />
+                <span asp-validation-for="Egitimtrh" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">EGİTİM KONULARI</label>
+                <input asp-for="Egitimkonulari" class="form-control" />
+                <span asp-validation-for="Egitimkonulari" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">TOPLAM SÜRE(dk olarak)</label>
+                <input asp-for="Toplamsure" class="form-control" />
+                <span asp-validation-for="Toplamsure" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">EGİTİM ALANI</label>
+                <select asp-for="Egitimalani" class="form-control">
+                    <option value="İşyerinde">İşyerinde</option>
+                    <option value="İşyeri Dışında">İşyeri Dışında</option>
+                </select>
+                <span asp-validation-for="Egitimalani" class="text-danger"></span>
+            </div>
+
+
+        </div>
+
+        <div class="col-md-4">
+            <div class="form-group">
+                <label class="control-label">AÇIKLAMA</label>
+                <textarea style="height:110px;" asp-for="Aciklama" class="form-control"></textarea>
+                <span asp-validation-for="Aciklama" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <input type="submit" value="EKLE" class="btn btn-info" />
+            </div>
+        </div>
+    </form>
+</div>
+
+<div>
+    @if (@Context.Session.GetString("grubu") == "A")
+    {
+        <a asp-action="Grupegitim">
+
+            <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    }
+    else if (@Context.Session.GetString("grubu") == "D")
+    {
+        <a asp-action="kulFirmaegitim">
+
+            <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    }
+
+</div>
+
+<script>
+    $(".select").select2();
+</script>

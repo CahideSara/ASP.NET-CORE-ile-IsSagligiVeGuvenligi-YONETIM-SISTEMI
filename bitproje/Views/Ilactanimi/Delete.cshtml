@@ -1,0 +1,73 @@
+﻿@model bitproje.Entitys.Ilactanimi
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.2.1.js"></script>
+
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
+
+<style>
+    dt {
+        height: 28px;
+    }
+</style>
+
+
+<br />
+
+<div>
+    <h style="color:red;">BU İLAÇ TANIMINI SİLMEK İSTEDİĞİNİZE EMİN MİSİNİZ ?</h>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            İLAÇ ADI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ilacadi)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete" onsubmit="return false;">
+        <a asp-action="Index">LİSTEYE GERİ DÖN</a> &emsp;|&emsp;
+        <input type="hidden" asp-for="Ilacid" />
+        <input type="submit" style="font-size:13px;font-weight:bold;height:27px;width:70px;" value="SİL" class="btn btn-danger" />
+
+    </form>
+</div>
+
+
+@*<script>
+
+    $('.btn-danger').on('click', function () {
+        swal("bunu silinsın mi", {
+            buttons: {  //cancel, catch, defealt farkını anlamadım.
+                cancel: "HAYIR!",
+                catch: {
+                    text: "Throw Pokéball!",
+                    value: "catch",
+                },
+                defeat: "İptal",
+            },
+        })
+            .then((value) => {
+                switch (value) {
+
+                    case "defeat":
+                        swal("Pikachu fainted! You gained 500 XP!");
+                        break;
+
+                    case "catch":
+                        swal("Gotcha!", "Pikachu was caught!", "success");
+                        break;
+
+                    default:
+                        swal("Got away safely!");
+                }
+            });
+    });
+</script>*@
+
+
+

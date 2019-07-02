@@ -1,0 +1,43 @@
+﻿@model IEnumerable<bitproje.Entitys.Firma>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    table {
+        font-size: 12px;
+    }
+</style>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">FİRMA ID </th>
+            <th scope="col">FİRMA  ADI</th>
+            <th scope="col">İSVEREN ADI SOYADI</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                    
+    <tbody>
+        @foreach (var f in Model)
+        {
+            <tr>
+                <td> @f.Firmaid</td>
+                <td> @f.Funvan</td>
+                <td> @f.Isvrnadsoyad</td>
+                <td>
+
+                    <a asp-action="Detayi" asp-route-id="@f.Firmaid" style="font-size:20px;"><i class="fas fa-check-circle" title="seç"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $('#refresh').click(function() {
+      location.reload();
+    });
+</script>

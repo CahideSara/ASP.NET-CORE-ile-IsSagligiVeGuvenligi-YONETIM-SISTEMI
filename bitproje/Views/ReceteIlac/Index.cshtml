@@ -1,0 +1,96 @@
+﻿@model IEnumerable<bitproje.Entitys.Receteilac>
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<p>
+    <div>
+        <a asp-action="Details" asp-controller="Muayene" asp-route-id="@ViewBag.muayne.Rid">
+
+            <img style="height:30px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    </div>
+</p>
+
+<p>
+    &emsp;
+    @if (@Context.Session.GetString("grubu") == "A")
+    {
+        <a asp-action="Create" asp-route-id="@ViewBag.muayne.Rid"><i style="font-size:20px;" class="fas fa-plus-circle" title="ilac ekle"></i> &nbsp; YENİ İLAÇ EKLE</a>
+    }
+    else if (@Context.Session.GetString("grubu") == "C")
+    {
+        <a asp-action="Create" asp-route-id="@ViewBag.muayne.Rid"><i style="font-size:20px;" class="fas fa-plus-circle" title="ilac ekle"></i> &nbsp; YENİ İLAÇ EKLE</a>
+    }
+    else if (@Context.Session.GetString("grubu") == "D")
+    {
+        <a asp-action="Create" asp-route-id="@ViewBag.muayne.Rid"><i style="font-size:20px;" class="fas fa-plus-circle" title="ilac ekle"></i> &nbsp; YENİ İLAÇ EKLE</a>
+    }
+</p>
+
+<br />
+<div>
+    @foreach (var item in Model)
+    {
+
+        <div>
+            <div class="col-md-10">
+                <dl class="dl-horizontal">
+                    <dt>
+                        İLAC
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.Ilac.Ilacadi)
+                    </dd>
+                    <dt>
+                        KULLANIM ŞEKLİ
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.Kullanimsekli)
+                    </dd>
+                    <dt>
+                        PERİYODU
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.Periyod)
+                    </dd>
+                    <dt>
+                        İLAÇ DOZU
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.Ilacdozu)
+                    </dd>
+                    <dt>
+                        KULLANIM ADEDİ
+                    </dt>
+                    <dd>
+                        @Html.DisplayFor(modelItem => item.Kullanimadedi)
+                    </dd>
+                </dl>
+            </div>
+
+            <div class="col-md-2" style="font-size:20px;">
+                @if (@Context.Session.GetString("grubu") == "A")
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Rilacid"><i class="fas fa-edit" title="GÜNCELLE"></i></a> <br />
+                    <a asp-action="Delete" asp-route-id="@item.Rilacid"><i class="fas fa-trash-alt" title="reçeteden kaldır"></i></a>
+                }
+                else if (@Context.Session.GetString("grubu") == "C")
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Rilacid"><i class="fas fa-edit" title="GÜNCELLE"></i></a> <br />
+                    <a asp-action="Delete" asp-route-id="@item.Rilacid"><i class="fas fa-trash-alt" title="reçeteden kaldır"></i></a>
+                }
+                else if (@Context.Session.GetString("grubu") == "D")
+                {
+                    <a asp-action="Edit" asp-route-id="@item.Rilacid"><i class="fas fa-edit" title="GÜNCELLE"></i></a> <br />
+                    <a asp-action="Delete" asp-route-id="@item.Rilacid"><i class="fas fa-trash-alt" title="reçeteden kaldır"></i></a>
+                }
+            </div>
+        </div>
+
+        <br />
+        <br />
+    }
+</div>
+<br />

@@ -1,0 +1,75 @@
+﻿@model bitproje.Entitys.Birim
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<style>
+    dt {
+        height: 28px;
+    }
+</style>
+
+
+
+<div>
+    <h4>BİRİM</h4>
+
+    <dl class="dl-horizontal">
+        <dt>
+            BİRİM ADI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Birimad)
+        </dd>
+        <dt>
+            ADRESİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+        <dt>
+            TEHLİKE SINIFI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tehlikesinif)
+        </dd>
+        <dt>
+            AÇIKLAMA
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+        <dt>
+            BAĞLI OLDUĞU FİRMA
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Firma.Funvan) / @Html.DisplayFor(model => model.Firma.Isvrnadsoyad)
+        </dd>
+        <dt>
+            SORUMLU PERSONEL
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SicilnopNavigation.Sicilnop) / @Html.DisplayFor(model => model.SicilnopNavigation.Ad)&emsp;@Html.DisplayFor(model => model.SicilnopNavigation.Soyad)
+        </dd>
+    </dl>
+</div>
+<div>
+    @if (@Context.Session.GetString("grubu") == "A")
+    {<a asp-action="Grupbirim">LİSTEYE GERİ DÖN</a>}
+    else if (@Context.Session.GetString("grubu") == "B")
+    { <a asp-action="Firmabirim">LİSTEYE GERİ DÖN</a> }
+    else if (@Context.Session.GetString("grubu") == "C")
+    { <a asp-action="kullaniciFirmabirim">LİSTEYE GERİ DÖN</a> }
+    else if (@Context.Session.GetString("grubu") == "D")
+    { <a asp-action="kullaniciFirmabirim">LİSTEYE GERİ DÖN</a>}
+
+    @if (@Context.Session.GetString("grubu") == "A")
+    {<i>&emsp;|&emsp;</i><a asp-action="Edit" asp-route-id="@Model.Birimid"><i class="fas fa-edit" title="GÜNCELLE"></i></a>}
+    else if (@Context.Session.GetString("grubu") == "B" && @Context.Session.GetString("firmabirimguncel") == true.ToString())
+    {<i>&emsp;|&emsp;</i><a asp-action="Edit" asp-route-id="@Model.Birimid"><i class="fas fa-edit" title="GÜNCELLE"></i></a>}
+    else if (@Context.Session.GetString("grubu") == "C" && @Context.Session.GetString("hekimbirimguncel") == true.ToString())
+    {<i>&emsp;|&emsp;</i><a asp-action="Edit" asp-route-id="@Model.Birimid"><i class="fas fa-edit" title="GÜNCELLE"></i></a>}
+    else if (@Context.Session.GetString("grubu") == "D" && @Context.Session.GetString("uzmanbirimguncel") == true.ToString())
+    {<i>&emsp;|&emsp;</i><a asp-action="Edit" asp-route-id="@Model.Birimid"><i class="fas fa-edit" title="GÜNCELLE"></i></a>}
+</div>

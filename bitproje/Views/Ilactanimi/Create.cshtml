@@ -1,0 +1,33 @@
+﻿@model bitproje.Entitys.Ilactanimi
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h4>İLAÇ TANIMI EKLE</h4>
+<hr />
+<div class="row">
+
+    <div class="col-md-4">
+        <form asp-action="Create">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label  class="control-label">İLAÇ ADI</label>
+                <input asp-for="Ilacadi" class="form-control" />
+                <span asp-validation-for="Ilacadi" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <input type="submit" value="EKLE" class="btn btn-info" />
+            </div>
+        </form>
+    </div>
+</div>
+
+<div>
+    <a asp-action="Index">
+
+        <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+    </a>
+</div>

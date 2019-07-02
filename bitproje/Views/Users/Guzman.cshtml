@@ -1,0 +1,27 @@
+﻿@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+@using Microsoft.AspNetCore.Http;
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+
+</head>
+<body>
+    <br>
+    <br>
+    <br>
+    <p style="text-align:center">  HOŞGELDİN  İŞYERİ UZMANI&emsp; @Context.Session.GetString("sicilno") &ensp;/ &ensp;@Context.Session.GetString("ad")  &ensp;@Context.Session.GetString("soyad")  </p>
+
+    <br>
+    <p style="text-align:center">  İŞLEM YAPMAK İÇİN ÖNCELİKLE  &emsp; <a asp-action="kulFirmaDegis" asp-controller="Kullanicifirma" style="font-size:20px;font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;">FİRMAYI SEÇMEK</a>  &emsp;  GEREKİYOR </p>
+    <br>
+
+
+</body>
+</html>

@@ -1,0 +1,34 @@
+﻿@model bitproje.Entitys.Statu
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    dt {
+        height: 28px;
+    }
+</style>
+
+<br />
+
+<div>
+    <h style="color:red;">BU STATUYU SİLMEK İSTEDİĞİNİZE EMİN MİSİNİZ ?</h>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            STATU ADI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Statuadi)
+        </dd>
+    </dl>
+    
+    <form asp-action="Delete">
+        <a asp-action="Index">LİSTEYE GERİ DÖN</a> &emsp;|&emsp;
+        <input type="hidden" asp-for="Statuid" />
+        <input type="submit" style="font-size:13px;font-weight:bold;height:27px;width:70px;" value="SİL" class="btn btn-danger" />
+
+    </form>
+</div>

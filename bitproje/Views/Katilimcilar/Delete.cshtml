@@ -1,0 +1,40 @@
+﻿@model bitproje.Entitys.Katilimcilar
+
+@{
+    ViewData["Title"] = "Delete";
+}
+
+
+<style>
+    dt {
+        height: 28px;
+    }
+</style>
+
+<br />
+<div>
+    <h style="color:red;">BU KATILIMCIYI SİLMEK İSTEDİĞİNİZE EMİN MİSİNİZ ?</h>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            KATILIMCI PERSONEL
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.personel.Sicilnop) /  @Html.DisplayFor(model => model.personel.Ad)   @Html.DisplayFor(model => model.personel.Soyad)
+        </dd>
+        <dt>
+            BAŞARI YÜZDESİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Basariyuzdesi)
+        </dd>
+
+    </dl>
+
+    <form asp-action="Delete">
+        <a asp-action="Index" asp-route-id="@Model.Egitimid">LİSTEYE GERİ DÖN</a> &emsp;|&emsp;
+        <input type="hidden" asp-for="Katilimid" />
+        <input type="submit" style="font-size:13px;font-weight:bold;height:27px;width:70px;" value="SİL" class="btn btn-danger" />
+
+    </form>
+</div>

@@ -1,0 +1,115 @@
+﻿@model bitproje.Entitys.Firma
+
+@{
+    ViewData["Title"] = "Create";
+}
+
+
+<h4>FİRMA GRUBU EKLE</h4>
+<hr />
+<div class="row">
+    <form asp-action="Create">
+        <div class="col-md-4">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <div class="form-group">
+                <label class="control-label">FİRMA AD</label>
+                <input asp-for="Funvan" class="form-control" />
+                <span asp-validation-for="Funvan" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">İŞ VEREN KİŞİ</label>
+                <input asp-for="Isvrnadsoyad" class="form-control" />
+                <span asp-validation-for="Isvrnadsoyad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">İŞ VEREN GSM</label>
+                <input asp-for="Isvrngsm" class="form-control" />
+                <span asp-validation-for="Isvrngsm" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">FİRMA TELEFON</label>
+                <input asp-for="Firmatlfn" class="form-control" />
+                <span asp-validation-for="Firmatlfn" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">FAKS</label>
+                <input asp-for="Faks" class="form-control" />
+                <span asp-validation-for="Faks" class="text-danger"></span>
+            </div>
+
+
+
+        </div>
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label class="control-label">FİRMA MAİL</label>
+                <input asp-for="Firmamail" class="form-control" />
+                <span asp-validation-for="Firmamail" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">İL</label>
+                <input asp-for="Il" class="form-control" />
+                <span asp-validation-for="Il" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">İLÇE</label>
+                <input asp-for="Ilce" class="form-control" />
+                <span asp-validation-for="Ilce" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">ADRES</label>
+                <input asp-for="Adres" class="form-control" />
+                <span asp-validation-for="Adres" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">FAALİYET ALANI</label>
+                <input asp-for="Faaliyetalan" class="form-control" />
+                <span asp-validation-for="Faaliyetalan" class="text-danger"></span>
+            </div>
+        </div>
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label class="control-label">SGK SİCİL</label>
+                <input asp-for="Sgksicil" class="form-control" />
+                <span asp-validation-for="Sgksicil" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">TEHLİKE SINIFI</label>
+                <select asp-for="Tehlikesinif" class="form-control">
+                    <option value="AZ TEHLİKELİ">AZ TEHLİKELİ</option>
+                    <option value="TEHLİKELİ">TEHLİKELİ</option>
+                    <option value="ÇOK TEHLİKELİ">ÇOK TEHLİKELİ</option>
+                </select>
+                <span asp-validation-for="Tehlikesinif" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">GRUP ŞİRKET ?</label>
+                <select asp-for="Grupsirket" class="form-control">
+                    <option value="EVET">EVET</option>
+                    <option value="HAYIR">HAYIR</option>
+                </select>
+                <span asp-validation-for="Grupsirket" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <input type="submit" value="EKLE" class="btn btn-info" />
+            </div>
+            @if (ViewBag.sonuc != null)
+            {
+                <p class="alert alert-success"> @ViewBag.sonuc</p>
+            }
+        </div>
+    </form>
+</div>
+
+<div>
+    <a asp-action="Index">
+
+        <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+    </a>
+</div>

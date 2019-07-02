@@ -1,0 +1,107 @@
+﻿@model bitproje.Entitys.Personel
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    dt {
+        height: 28px;
+    }
+</style>
+<h3>PERSONEL</h3>
+<br />
+
+<div>
+    <h style="color:red;">BU PERSONELİ SİLMEK İSTEDİĞİNİZE EMİN MİSİNİZ ?</h>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            SİCİL NUMARASI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Sicilnop)
+        </dd>
+        <dt>
+            PERSONEL ADI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ad)
+        </dd>
+        <dt>
+            PERSONEL SOYADI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Soyad)
+        </dd>
+        <dt>
+            ÜNVANI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Unvan)
+        </dd>
+        <dt>
+            ÖĞRENİM DURUMU
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Ogrenimdurum)
+        </dd>
+        <dt>
+            CİNSİYET
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cinsiyet)
+        </dd>
+        <dt>
+            BOYU
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Boy)
+        </dd>
+        <dt>
+            KİLOSU
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Kilo)
+        </dd>
+        <dt>
+            İŞE GİRİŞ TARİHİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Isegiristrh)
+        </dd>
+        <dt>
+            DOĞUM TARİHİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dogumtarih)
+        </dd>
+        <dt>
+            DOĞUM YERİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Dogumyer)
+        </dd>
+        <dt>
+            ÇALIŞTIĞI FİRMA
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Firma.Funvan) / @Html.DisplayFor(model => model.Firma.Isvrnadsoyad)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        @if (@Context.Session.GetString("grubu") == "A")
+        {<a asp-action="Gruppersonel">LİSTEYE GERİ DÖN</a><i>&emsp;| &emsp;</i>}
+        else if (@Context.Session.GetString("grubu") == "B")
+        { <a asp-action="Firmapersonel">LİSTEYE GERİ DÖN</a><i>&emsp;| &emsp;</i>}
+        else if (@Context.Session.GetString("grubu") == "C")
+        { <a asp-action="kullaniciFirmapersonel">LİSTEYE GERİ DÖN</a><i>&emsp;| &emsp;</i>}
+        else if (@Context.Session.GetString("grubu") == "D")
+        { <a asp-action="kullaniciFirmapersonel">LİSTEYE GERİ DÖN</a><i>&emsp;| &emsp;</i>}
+        <input type="hidden" asp-for="Sicilnop" />
+        <input type="submit" style="font-size:13px;font-weight:bold;height:27px;width:70px;" value="SİL" class="btn btn-danger" />
+
+    </form>
+</div>

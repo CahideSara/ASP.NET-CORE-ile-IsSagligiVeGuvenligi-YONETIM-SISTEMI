@@ -1,0 +1,130 @@
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
+
+  <PropertyGroup>
+    <TargetFramework>netcoreapp2.1</TargetFramework>
+    <TypeScriptToolsVersion>3.1</TypeScriptToolsVersion>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Microsoft.AspNetCore.App" />
+    <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.1.2" PrivateAssets="All" />
+    <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="2.1.1" />
+    <PackageReference Include="Select2.js" Version="4.0.6" />
+    <DotNetCliToolReference Include="Microsoft.EntityFrameworkCore.Tools.Dotnet" Version="2.0.0"></DotNetCliToolReference>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\package\bin\postinstall.js" />
+    <None Include="wwwroot\package\CHANGELOG.md" />
+    <None Include="wwwroot\package\dist\sweetalert2.all.js" />
+    <None Include="wwwroot\package\dist\sweetalert2.all.min.js" />
+    <None Include="wwwroot\package\dist\sweetalert2.js" />
+    <None Include="wwwroot\package\dist\sweetalert2.min.js" />
+    <None Include="wwwroot\package\LICENSE" />
+    <None Include="wwwroot\package\README.md" />
+    <None Include="wwwroot\package\src\animations.scss" />
+    <None Include="wwwroot\package\src\constants.js" />
+    <None Include="wwwroot\package\src\enhancers\withNoNewKeyword.js" />
+    <None Include="wwwroot\package\src\globalState.js" />
+    <None Include="wwwroot\package\src\instanceMethods.js" />
+    <None Include="wwwroot\package\src\instanceMethods\close.js" />
+    <None Include="wwwroot\package\src\instanceMethods\enable-disable-elements.js" />
+    <None Include="wwwroot\package\src\instanceMethods\getInput.js" />
+    <None Include="wwwroot\package\src\instanceMethods\hideLoading.js" />
+    <None Include="wwwroot\package\src\instanceMethods\progress-steps.js" />
+    <None Include="wwwroot\package\src\instanceMethods\show-reset-validation-error.js" />
+    <None Include="wwwroot\package\src\instanceMethods\update.js" />
+    <None Include="wwwroot\package\src\instanceMethods\_main.js" />
+    <None Include="wwwroot\package\src\mixins.scss" />
+    <None Include="wwwroot\package\src\privateMethods.js" />
+    <None Include="wwwroot\package\src\privateProps.js" />
+    <None Include="wwwroot\package\src\staticMethods.js" />
+    <None Include="wwwroot\package\src\staticMethods\argsToParams.js" />
+    <None Include="wwwroot\package\src\staticMethods\dom.js" />
+    <None Include="wwwroot\package\src\staticMethods\fire.js" />
+    <None Include="wwwroot\package\src\staticMethods\mixin.js" />
+    <None Include="wwwroot\package\src\staticMethods\queue.js" />
+    <None Include="wwwroot\package\src\staticMethods\showLoading.js" />
+    <None Include="wwwroot\package\src\staticMethods\timer.js" />
+    <None Include="wwwroot\package\src\SweetAlert.js" />
+    <None Include="wwwroot\package\src\sweetalert2.js" />
+    <None Include="wwwroot\package\src\sweetalert2.scss" />
+    <None Include="wwwroot\package\src\toasts.scss" />
+    <None Include="wwwroot\package\src\utils\aria.js" />
+    <None Include="wwwroot\package\src\utils\classes.js" />
+    <None Include="wwwroot\package\src\utils\defaultInputValidators.js" />
+    <None Include="wwwroot\package\src\utils\DismissReason.js" />
+    <None Include="wwwroot\package\src\utils\dom\animationEndEvent.js" />
+    <None Include="wwwroot\package\src\utils\dom\domUtils.js" />
+    <None Include="wwwroot\package\src\utils\dom\getters.js" />
+    <None Include="wwwroot\package\src\utils\dom\index.js" />
+    <None Include="wwwroot\package\src\utils\dom\init.js" />
+    <None Include="wwwroot\package\src\utils\dom\inputUtils.js" />
+    <None Include="wwwroot\package\src\utils\dom\measureScrollbar.js" />
+    <None Include="wwwroot\package\src\utils\dom\parseHtmlToContainer.js" />
+    <None Include="wwwroot\package\src\utils\dom\renderers\render.js" />
+    <None Include="wwwroot\package\src\utils\dom\renderers\renderActions.js" />
+    <None Include="wwwroot\package\src\utils\dom\renderers\renderCloseButton.js" />
+    <None Include="wwwroot\package\src\utils\dom\renderers\renderContainer.js" />
+    <None Include="wwwroot\package\src\utils\dom\renderers\renderContent.js" />
+    <None Include="wwwroot\package\src\utils\dom\renderers\renderFooter.js" />
+    <None Include="wwwroot\package\src\utils\dom\renderers\renderHeader.js" />
+    <None Include="wwwroot\package\src\utils\dom\renderers\renderIcon.js" />
+    <None Include="wwwroot\package\src\utils\dom\renderers\renderImage.js" />
+    <None Include="wwwroot\package\src\utils\dom\renderers\renderInput.js" />
+    <None Include="wwwroot\package\src\utils\dom\renderers\renderPopup.js" />
+    <None Include="wwwroot\package\src\utils\dom\renderers\renderProgressSteps.js" />
+    <None Include="wwwroot\package\src\utils\dom\renderers\renderTitle.js" />
+    <None Include="wwwroot\package\src\utils\ieFix.js" />
+    <None Include="wwwroot\package\src\utils\iosFix.js" />
+    <None Include="wwwroot\package\src\utils\isNodeEnv.js" />
+    <None Include="wwwroot\package\src\utils\openPopup.js" />
+    <None Include="wwwroot\package\src\utils\params.js" />
+    <None Include="wwwroot\package\src\utils\scrollbarFix.js" />
+    <None Include="wwwroot\package\src\utils\setParameters.js" />
+    <None Include="wwwroot\package\src\utils\Timer.js" />
+    <None Include="wwwroot\package\src\utils\utils.js" />
+    <None Include="wwwroot\package\src\variables.scss" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <TypeScriptCompile Include="wwwroot\package\sweetalert2.d.ts" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Update="Views\Birim\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Grup\Kayit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Grup\Index.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Hekim\Shared\_hheader.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Hekim\Shared\_Layout.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Hekim\Shared\_hmenu.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Hekim\Shared\_CookieConsentPartial.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Home\Menu.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Recete\Create.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Recete\Delete.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+    <Content Update="Views\Recete\Edit.cshtml">
+      <Pack>$(IncludeRazorContentInPack)</Pack>
+    </Content>
+  </ItemGroup>
+
+</Project>

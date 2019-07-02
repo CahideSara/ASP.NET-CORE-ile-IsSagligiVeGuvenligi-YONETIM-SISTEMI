@@ -1,0 +1,45 @@
+﻿@model IEnumerable<bitproje.Entitys.Firma>
+
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    table {
+        font-size: 12px;
+    }
+</style>
+<br />
+<br />
+
+<p>
+    &emsp; <a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="grup ekle"></i> &nbsp; YENİ FİRMA GRUBU EKLE</a>
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">FİRMA ID </th>
+            <th scope="col">FİRMA GRUP ADI</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var f in Model)
+        {
+            <tr>
+                <td> @f.Firmaid</td>
+                <td> @f.Funvan</td>
+                <td>
+                    <a asp-action="Delete" asp-route-id="@f.Firmaid"><i class="fas fa-trash-alt" title="GRUP SİL"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
+<script type="text/javascript">
+    $('#refresh').click(function () {
+        location.reload();
+    });
+</script>

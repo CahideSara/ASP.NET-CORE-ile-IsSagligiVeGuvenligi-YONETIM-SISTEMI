@@ -1,0 +1,66 @@
+﻿@model IEnumerable<bitproje.Entitys.Birim>
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Index";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    table {
+        font-size: 12px;
+    }
+</style>
+<br />
+<br />
+<p>
+    @if (@Context.Session.GetString("grubu") == "A")
+    {<i>&emsp;</i><a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="firma ekle"></i> &nbsp; YENİ BİRİM EKLE</a>}
+    else if (@Context.Session.GetString("grubu") == "B" && @Context.Session.GetString("firmabirimekle") == true.ToString())
+    { <i>&emsp;</i><a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="firma ekle"></i> &nbsp; YENİ BİRİM EKLE</a>}
+    else if (@Context.Session.GetString("grubu") == "C" && @Context.Session.GetString("hekimbirimekle") == true.ToString())
+    { <i>&emsp;</i><a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="firma ekle"></i> &nbsp; YENİ BİRİM EKLE</a>}
+    else if (@Context.Session.GetString("grubu") == "D" && @Context.Session.GetString("uzmanbirimekle") == true.ToString())
+    { <i>&emsp;</i><a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="firma ekle"></i> &nbsp; YENİ BİRİM EKLE</a>}
+
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th scope="col">BİRİM ID </th>
+            <th scope="col">BİRİM ADI</th>
+            <th scope="col">TEHLİKE SINIFI</th>
+            <th scope="col"></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var f in Model)
+        {
+            <tr>
+                <td> @f.Birimid</td>
+                <td> @f.Birimad</td>
+                <td> @f.Tehlikesinif</td>
+                <td style="font-size:14px;">
+                    @if (@Context.Session.GetString("grubu") == "A")
+                    {<a asp-action="Edit" asp-route-id="@f.Birimid"><i class="fas fa-edit" title="GÜNCELLE"></i></a><i>|</i>}
+                    else if (@Context.Session.GetString("grubu") == "B" && @Context.Session.GetString("firmabirimguncel") == true.ToString())
+                    { <a asp-action="Edit" asp-route-id="@f.Birimid"><i class="fas fa-edit" title="GÜNCELLE"></i></a><i>|</i>}
+                    else if (@Context.Session.GetString("grubu") == "C" && @Context.Session.GetString("hekimbirimguncel") == true.ToString())
+                    { <a asp-action="Edit" asp-route-id="@f.Birimid"><i class="fas fa-edit" title="GÜNCELLE"></i></a><i>|</i>}
+                    else if (@Context.Session.GetString("grubu") == "D" && @Context.Session.GetString("uzmanbirimguncel") == true.ToString())
+                    { <a asp-action="Edit" asp-route-id="@f.Birimid"><i class="fas fa-edit" title="GÜNCELLE"></i></a><i>|</i>}
+                    <a asp-action="Details" asp-route-id="@f.Birimid"><i class="fas fa-info-circle" title="BİRİM DETAYI"></i></a>
+                    
+                    @if (@Context.Session.GetString("grubu") == "A")
+                    {<i>|</i><a asp-action="Delete" asp-route-id="@f.Birimid"><i class="fas fa-trash-alt" title="BİRİMİ SİL"></i></a> }
+                    else if (@Context.Session.GetString("grubu") == "B" && @Context.Session.GetString("firmabirimsil") == true.ToString())
+                    {<i>|</i><a asp-action="Delete" asp-route-id="@f.Birimid"><i class="fas fa-trash-alt" title="BİRİMİ SİL"></i></a> }
+                    else if (@Context.Session.GetString("grubu") == "C" && @Context.Session.GetString("hekimbirimsil") == true.ToString())
+                    {<i>|</i><a asp-action="Delete" asp-route-id="@f.Birimid"><i class="fas fa-trash-alt" title="BİRİMİ SİL"></i></a> }
+                    else if (@Context.Session.GetString("grubu") == "D" && @Context.Session.GetString("uzmanbirimsil") == true.ToString())
+                    {<i>|</i><a asp-action="Delete" asp-route-id="@f.Birimid"><i class="fas fa-trash-alt" title="BİRİMİ SİL"></i></a> }
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

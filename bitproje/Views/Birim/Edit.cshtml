@@ -1,0 +1,129 @@
+﻿@model bitproje.Entitys.Birim
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Edit";
+}
+
+
+<script src="~/lib/jquery/dist/jquery.js"></script>
+<link href="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/css/select2.min.css" rel="stylesheet" />
+<script src="https://cdnjs.cloudflare.com/ajax/libs/select2/4.0.3/js/select2.min.js"></script>
+
+
+<h4>BİRİM BİLGİLERİNİ GÜNCELLE</h4>
+<hr />
+<div class="row">
+    <form asp-action="Edit">
+        <div class="col-md-4">
+
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Birimid" />
+            <div class="form-group">
+                <label class="control-label">BİRİM ADI</label>
+                <input asp-for="Birimad" class="form-control" />
+                <span asp-validation-for="Birimad" class="text-danger"></span>
+            </div>
+            <div class="form-group">
+                <label class="control-label">ADRES</label>
+                <input asp-for="Adres" class="form-control" />
+                <span asp-validation-for="Adres" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                <label class="control-label">TEHLİKE SINIFI</label>
+                <select asp-for="Tehlikesinif" class="form-control">
+                    <option value="AZ TEHLİKELİ">AZ TEHLİKELİ</option>
+                    <option value="TEHLİKELİ">TEHLİKELİ</option>
+                    <option value="ÇOK TEHLİKELİ">ÇOK TEHLİKELİ</option>
+                </select>
+                <span asp-validation-for="Tehlikesinif" class="text-danger"></span>
+            </div>
+            @if (@Context.Session.GetString("grubu") == "A")
+            {
+                <div class="form-group">
+                    <label class="control-label">BAĞLI OLDUĞU FİRMA</label>
+                    <select asp-for="Firmaid" class="form-control select">
+                        @foreach (var k in ViewBag.birimfirması)
+                        {
+                            <option value="@k.Firmaid">@k.Firmaid /  @k.Funvan </option>
+                        }
+                    </select>
+                </div>
+            }
+            else if (@Context.Session.GetString("grubu") == "B")
+            {
+                <input type="hidden" asp-for="Firmaid" />
+            }
+            else if (@Context.Session.GetString("grubu") == "C")
+            {
+                <input type="hidden" asp-for="Firmaid" />
+            }
+            else if (@Context.Session.GetString("grubu") == "D")
+            {
+                <input type="hidden" asp-for="Firmaid" />
+            }
+
+        </div>
+
+        <div class="col-md-4">
+
+            <div class="form-group">
+                <label class="control-label">SORUMLU PERSONEL</label>
+                <select asp-for="Sicilnop" class="form-control select">
+                    @foreach (var k in ViewBag.birimpersonel)
+                    {
+                        <option value="@k.Sicilnop">@k.Sicilnop /  @k.Ad &nbsp; @k.Soyad</option>
+                    }
+                </select>
+            </div>
+            <div class="form-group">
+                <label class="control-label">AÇIKLAMA</label>
+                <textarea style="height:110px;" asp-for="Aciklama" class="form-control"></textarea>
+                <span asp-validation-for="Aciklama" class="text-danger"></span>
+            </div>
+
+            <div class="form-group">
+                &emsp; &emsp;&emsp;&emsp;&emsp;&emsp;&emsp;
+                <input type="submit" style="background-color:#8f8fa0;font-weight:800" value="KAYDET" class="btn btn-default" />
+            </div>
+        </div>
+
+    </form>
+</div>
+
+<div>
+    @if (@Context.Session.GetString("grubu") == "A")
+    {
+        <a asp-action="Grupbirim">
+
+            <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    }
+    else if (@Context.Session.GetString("grubu") == "B")
+    {
+        <a asp-action="Firmabirim">
+
+            <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    }
+    else if (@Context.Session.GetString("grubu") == "C")
+    {
+        <a asp-action="kullaniciFirmabirim">
+
+            <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    }
+    else if (@Context.Session.GetString("grubu") == "D")
+    {
+        <a asp-action="kullaniciFirmabirim">
+
+            <img style="height:35px;" title="Listeye geri dön" src="~/images/Iconsmind-Outline-Back.ico" />
+        </a>
+    }
+
+
+</div>
+
+<script>
+    $(".select").select2();
+</script>

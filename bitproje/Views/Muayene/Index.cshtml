@@ -1,0 +1,81 @@
+﻿@model IEnumerable<bitproje.Entitys.Muayene>
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Index";
+}
+
+<br />
+<br />
+<p>
+    &emsp;
+    @if (@Context.Session.GetString("grubu") == "A")
+    {
+        <a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="muayene ekle"></i> &nbsp; YENİ MUAYENE EKLE</a>
+    }
+    else if (@Context.Session.GetString("grubu") == "C")
+    {
+        <a asp-action="Create"><i style="font-size:20px;" class="fas fa-plus-circle" title="muayene ekle"></i> &nbsp; YENİ MUAYENE EKLE</a>
+    }
+  
+</p>
+<table class="table">
+    <thead>
+        <tr>
+            <th>
+                MUAYENEYİ YAPAN
+            </th>
+            <th>
+                MUAYENE OLAN
+            </th>
+            <th>
+                MUAYENE TAHİHİ
+            </th>
+            <th>
+                SONRAKİ M.TARİHİ
+            </th>
+
+            <th></th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SicilnoNavigation.Sicilno) / @Html.DisplayFor(modelItem => item.SicilnoNavigation.Ad)     &nbsp; @Html.DisplayFor(modelItem => item.SicilnoNavigation.Soyad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sicilnop)  /  @Html.DisplayFor(modelItem => item.SicilnopNavigation.Ad) &nbsp;  @Html.DisplayFor(modelItem => item.SicilnopNavigation.Soyad)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Mtarihi)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Sonrakimtarih)
+                </td>
+                <td style="font-size:14px;">
+                    @if (@Context.Session.GetString("grubu") == "A")
+                    {<a asp-action="Edit" asp-route-id="@item.Mid"><i class="fas fa-edit" title="GÜNCELLE"></i></a><i>|</i>
+                    }
+                    else if (@Context.Session.GetString("grubu") == "C")
+                    {<a asp-action="Edit" asp-route-id="@item.Mid"><i class="fas fa-edit" title="GÜNCELLE"></i></a><i>|</i>
+                    }
+                    
+
+                    <a asp-action="Details" asp-route-id="@item.Mid"><i class="fas fa-info-circle" title="MUAYENE DETAYI"></i></a>
+                    @if (@Context.Session.GetString("grubu") == "A")
+                    {
+                        <i> |</i><a asp-action="Delete" asp-route-id="@item.Mid"><i class="fas fa-trash-alt" title="MUAYENEYİ SİL"></i></a>
+                    }
+                    else if (@Context.Session.GetString("grubu") == "C")
+                    {
+                        <i> |</i><a asp-action="Delete" asp-route-id="@item.Mid"><i class="fas fa-trash-alt" title="MUAYENEYİ SİL"></i></a>
+                    }
+                   
+
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,33 @@
+﻿@model bitproje.Entitys.Users
+
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    dt {
+        height: 28px;
+    }
+</style>
+
+<br />
+<br />
+
+<div>
+    <hr />
+    <br />
+    <p style="color:red;text-align:center">' @Html.DisplayFor(model => model.Kullaniciadi) '  ADLI KİŞİNİN ŞİFRESİNİ  'sıfırIsgm'  </>
+    <p style="color:red;text-align:center" >OLARAK SIRIFLAMAK İSTEDİĞİNİZE EMİN MİSİNİZ ? </p>
+    <br />
+    <br />
+    <hr />
+
+
+    <form asp-action="SifreSifirla" style="text-align:center">
+        <a asp-action="Yönetim" asp-controller="Grup">LİSTEYE GERİ DÖN</a> &emsp;|&emsp;
+        <input type="hidden" asp-for="Id" />
+        <input type="submit" style="font-size:13px;font-weight:bold;height:27px;width:70px;" value="SIFIRLA" class="btn btn-danger" />
+
+    </form>
+</div>

@@ -1,0 +1,79 @@
+﻿@model bitproje.Entitys.Birim
+@using Microsoft.AspNetCore.Http;
+@{
+    ViewData["Title"] = "Delete";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<style>
+    dt {
+        height: 28px;
+    }
+</style>
+<h3>BİRİM</h3>
+<br />
+
+<div>
+    <h style="color:red;">BU BİRİMİ SİLMEK İSTEDİĞİNİZE EMİN MİSİNİZ ?</h>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            BİRİM ADI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Birimad)
+        </dd>
+        <dt>
+            ADRESİ
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Adres)
+        </dd>
+        <dt>
+            TEHLİKE SINIFI
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Tehlikesinif)
+        </dd>
+        <dt>
+            AÇIKLAMA
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Aciklama)
+        </dd>
+        <dt>
+            BAĞLI OLDUĞU FİRMA
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Firma.Funvan) / @Html.DisplayFor(model => model.Firma.Isvrnadsoyad)
+        </dd>
+        <dt>
+            SORUMLU PERSONEL
+        </dt>
+        <dd>
+            @Html.DisplayFor(model => model.SicilnopNavigation.Sicilnop) / @Html.DisplayFor(model => model.SicilnopNavigation.Ad)&emsp;@Html.DisplayFor(model => model.SicilnopNavigation.Soyad)
+        </dd>
+    </dl>
+
+    <form asp-action="Delete">
+        @if (@Context.Session.GetString("grubu") == "A")
+        {
+            <a asp-action="Grupbirim">LİSTEYE GERİ DÖN</a>
+        }
+        else if (@Context.Session.GetString("grubu") == "B")
+        {
+            <a asp-action="Firmabirim">LİSTEYE GERİ DÖN</a>
+        }
+        else if (@Context.Session.GetString("grubu") == "C")
+        {
+            <a asp-action="kullaniciFirmabirim">LİSTEYE GERİ DÖN</a>
+        }
+        else if (@Context.Session.GetString("grubu") == "D")
+        {
+            <a asp-action="kullaniciFirmabirim">LİSTEYE GERİ DÖN</a>
+        }&emsp;|&emsp;
+        <input type="hidden" asp-for="Birimid" />
+        <input type="submit" style="font-size:13px;font-weight:bold;height:27px;width:70px;" value="SİL" class="btn btn-danger" />
+
+    </form>
+</div>
